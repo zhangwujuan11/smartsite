@@ -1,0 +1,26 @@
+<view style="margin-top:30rpx ;display:flex;text-align: center;justify-content: center;font-weight:bold;font-size:32rpx;color: #3E3D3B;"> 关于“{{title}}”的评论</view>
+<view class="workbench">
+    <text class="title">内容 {{noteNowLen}}/{{noteMaxLen}}</text>
+    <view class="body">
+        <textarea bindinput="contentInput" data-max="{{noteMaxLen}}" data-type="content" maxlength="{{noteMaxLen}}" placeholder="请输入评论" style="margin: 3%;" value="{{describe}}"></textarea>
+    </view>
+    <text class="title">上传图片</text>
+    <view class="img-upload">
+        <view bindtap="chooseImage" class="img-add">
+            <image src="../images/sc.png"></image>
+        </view>
+        <view bindlongtap="deleteImage" class="img-item" data-index="{{index}}" wx:for="{{uploadimgs}}" wx:key="index">
+            <image bindtap="previewImage" data-index="{{index}}" mode="aspectFill" src="{{item}}"></image>
+        </view>
+    </view>
+    <view style="display: flex; flex-direction: row; justify-content: flex-start;align-items: center;">
+        <radio bindtap="checked" checked="{{closed}}" class="radioScale" style="background-color: #f4f7fc;color: #b9c2d3;transform:scale(0.7)"></radio>
+        <view style="background-color: #f4f7fc;color: #b9c2d3;font-size:26rpx;margin-left:-10rpx;">关闭评论</view>
+    </view>
+</view>
+<view class="workbench" style="padding: 0 35rpx;">
+    <view class="list" style="display: flex;flex-direction: row; justify-content: space-between;">
+        <view bindtap="resetBtnClick" class="btn" plain="true" size="default" style="border: 5rpx solid #004998;font-size:30rpx;">重 置 </view>
+        <view bindtap="submitBtnClick" class="btn" size="default" style="background-color: #FF9C22;font-size:30rpx;border: 5rpx solid #FF9C22;">提 交</view>
+    </view>
+</view>

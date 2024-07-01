@@ -1,0 +1,236 @@
+.wxParse {
+  color: #666;
+  font-family: Helvetica, sans-serif;
+  font-size: 28rpx;
+  line-height: 1.8;
+  margin: 0 5px;
+}
+view {
+  overflow: auto;
+  word-break: break-all;
+}
+.wxParse-inline {
+  display: inline;
+}
+.wxParse-div,
+.wxParse-inline {
+  margin: 0;
+  padding: 0;
+}
+.wxParse-h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+.wxParse-h2 {
+  font-size: 1.5em;
+  margin: 0.75em 0;
+}
+.wxParse-h3 {
+  font-size: 1.17em;
+  margin: 0.83em 0;
+}
+.wxParse-h4 {
+  margin: 1.12em 0;
+}
+.wxParse-h5 {
+  font-size: 0.83em;
+  margin: 1.5em 0;
+}
+.wxParse-h6 {
+  font-size: 0.75em;
+  margin: 1.67em 0;
+}
+.wxParse-h1 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 0.9em;
+}
+.wxParse-h2 {
+  font-size: 16px;
+}
+.wxParse-h2,
+.wxParse-h3 {
+  font-weight: 400;
+  margin-bottom: 0.34em;
+}
+.wxParse-h3 {
+  font-size: 15px;
+}
+.wxParse-h4 {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 0.24em;
+}
+.wxParse-h5 {
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 0.14em;
+}
+.wxParse-h6 {
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 0.04em;
+}
+.wxParse-b,
+.wxParse-h1,
+.wxParse-h2,
+.wxParse-h3,
+.wxParse-h4,
+.wxParse-h5,
+.wxParse-h6,
+.wxParse-strong {
+  font-weight: bolder;
+}
+.wxParse-address,
+.wxParse-cite,
+.wxParse-em,
+.wxParse-i,
+.wxParse-var {
+  font-style: italic;
+}
+.wxParse-code,
+.wxParse-kbd,
+.wxParse-pre,
+.wxParse-samp,
+.wxParse-tt {
+  font-family: monospace;
+}
+.wxParse-pre {
+  white-space: pre;
+}
+.wxParse-big {
+  font-size: 1.17em;
+}
+.wxParse-small,
+.wxParse-sub,
+.wxParse-sup {
+  font-size: 0.83em;
+}
+.wxParse-sub {
+  vertical-align: sub;
+}
+.wxParse-sup {
+  vertical-align: super;
+}
+.wxParse-del,
+.wxParse-s,
+.wxParse-strike {
+  text-decoration: line-through;
+}
+.wxParse-s,
+.wxParse-strong {
+  display: inline;
+}
+.wxParse-a {
+  color: #00bfff;
+  overflow: auto;
+  word-break: break-all;
+}
+.wxParse-video {
+  margin: 10px 0;
+  text-align: center;
+}
+.wxParse-video-video {
+  width: 100%;
+}
+.wxParse-img {
+  border-radius: 15rpx;
+  margin-bottom: 10rpx;
+  margin-top: 20rpx;
+  overflow: hidden;
+  width: 690rpx;
+}
+.wxParse-blockquote {
+  background: #f5f5f5;
+  border-left: 3px solid #dbdbdb;
+  font-family: Courier, Calibri, 宋体;
+  margin: 0;
+  padding: 10px 0 10px 5px;
+}
+.wxParse-code,
+.wxParse-wxxxcode-style {
+  background: #f5f5f5;
+  display: inline;
+}
+.wxParse-ul {
+  margin: 20rpx 10rpx;
+}
+.wxParse-li,
+.wxParse-li-inner {
+  align-items: baseline;
+  display: -webkit-flex;
+  display: flex;
+  margin: 10rpx 0;
+}
+.wxParse-li-text {
+  align-items: center;
+  line-height: 20px;
+}
+.wxParse-li-circle {
+  background-color: #333;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  height: 5px;
+  margin-right: 5px;
+  width: 5px;
+}
+.wxParse-li-square {
+  background-color: #333;
+}
+.wxParse-li-ring,
+.wxParse-li-square {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  height: 10rpx;
+  margin-right: 5px;
+  width: 10rpx;
+}
+.wxParse-li-ring {
+  background-color: #fff;
+  border: 2rpx solid #333;
+  border-radius: 50%;
+}
+.wxParse-u {
+  text-decoration: underline;
+}
+.wxParse-hide {
+  display: none;
+}
+.WxEmojiView {
+  align-items: center;
+}
+.wxEmoji {
+  height: 16px;
+  width: 16px;
+}
+.wxParse-tr {
+  border-bottom: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  border-top: 1px solid #e0e0e0;
+  display: -webkit-flex;
+  display: flex;
+}
+.wxParse-td,
+.wxParse-th {
+  border-left: 1px solid #e0e0e0;
+  flex: 1;
+  font-size: 28rpx;
+  padding: 5px;
+  word-break: break-all;
+}
+.wxParse-td:last {
+  border-top: 1px solid #e0e0e0;
+}
+.wxParse-th {
+  background: #f0f0f0;
+  border-top: 1px solid #e0e0e0;
+}
+.wxParse-del {
+  display: inline;
+}
+.wxParse-figure {
+  overflow: hidden;
+}
+.wxParse-p {
+  margin: 0 2rpx;
+}

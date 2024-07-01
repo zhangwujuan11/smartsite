@@ -1,0 +1,28 @@
+<view bindtouchend="touchEnd" bindtouchmove="touchMove" bindtouchstart="touchStart" class="touch" style="min-height: {{minHeight}}px;">
+    <view class="container">
+        <view class="tabbar">
+            <view bindtap="swichNav" class="tab-item {{currentTab==index?'on':''}}" data-current="{{index}}" wx:for="{{tabs}}" wx:key="index">{{item.name}}</view>
+        </view>
+        <view class="news" style="margin-top:103rpx;">
+            <view class="page-body" wx:for="{{recommendArticle}}" wx:key="id">
+                <navigator url="../news_detail/index?id={{item.id}}&type=party_build">
+                    <view class="item">
+                        <view class="bgImg" wx:if="{{indexofStr.includes(item.mfteCover,service_url)>-1}}">
+                        
+                            <image class="posterb" mode="aspectFill" src="{{item.mfteCover}}"></image>
+                            <image binderror="eventhandle" class="poster" mode="aspectFill" src="{{item.mfteCover}}"></image>
+                        </view>
+                        <view class="bgImg" wx:else>
+                            <image class="posterb" mode="aspectFill" src="{{item.mfteCover}}"></image>
+                            <image binderror="eventhandle" class="poster" src="{{item.mfteCover}}"></image>
+                        </view>
+                        <view class="meta">
+                            <text class="title" style="font-size: 26rpx;">{{item.mfteTitle}}</text>
+                            <text class="sub-title" style="font-size: 24rpx;">{{item.mfteCreateTime}}</text>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>

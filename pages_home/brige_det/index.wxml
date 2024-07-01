@@ -1,0 +1,92 @@
+<view class="recifydetailbox frombox_out">
+    <view class="cardbox">
+        <view class="cardtit bodb">梁片信息</view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">标段名称</view> {{getinfo.sectionName}} </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">梁片名称</view>
+            <view class="formcont flex2"> {{getinfo.girderName}} </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">浇筑日期</view>
+            <view class="formcont  flex2">
+                <text wx:if="{{getinfo.pourDate}}">{{getinfo.pourDate}}</text>
+                <text wx:else>-</text>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">张拉日期</view>
+            <view class="formcont  flex2">
+                <text wx:if="{{getinfo.tensionDate}}">{{getinfo.tensionDate}}</text>
+                <text wx:else>-</text>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">压浆日期</view>
+            <view class="formcont  flex2">
+                <text wx:if="{{getinfo.groutDate}}">{{getinfo.groutDate}}</text>
+                <text wx:else>-</text>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">入库日期</view>
+            <view class="formcont  flex2">
+                <text wx:if="{{getinfo.inboundDate}}">{{getinfo.inboundDate}}</text>
+                <text wx:else>-</text>
+            </view>
+        </view>
+    </view>
+    <view class="cardbox" wx:if="{{getinfo.outboundStatus==140000&&getinfo.audit==140102}}">
+        <view class="cardtit bodb"> 审批意见 <text class="passtext" wx:if="{{getinfo.audit==140102}}">通过</text>
+            <text class="failtext" wx:if="{{getinfo.audit==140103}}">不通过</text>
+            <text class="waittext" wx:if="{{getinfo.audit==140101}}">待审核</text>
+        </view>
+        <view class="formcont flex2 fails" wx:if="{{getinfo.audit==140103}}"> {{getinfo.comments}} </view>
+    </view>
+    <view class="cardbox" wx:if="{{identityCode==21003&&getinfo.audit!=140102}}">
+        <view class="cardtit bodb isanable">
+            <text>审批意见</text>
+            <view> 不通过<switch bindchange="enable" checked="{{isenable}}" color="#004097" style="zoom:.7;margin:0 15rpx;"></switch>通过 </view>
+        </view>
+        <view class="iffail" wx:if="{{!isenable}}">
+            <text>不通过理由</text>
+            <textarea bindinput="contentInput" class="forminner"></textarea>
+        </view>
+    </view>
+    <view class="cardbox" wx:if="{{getinfo.outboundStatus==140001}}">
+        <view class="cardtit bodb">物流出库</view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">出库日期</view> {{getinfo.outboundDate}} </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">出库地址</view> {{getinfo.outboundAddress}} </view>
+    </view>
+    <view class="cardbox" wx:if="{{identityCode==21002&&getinfo.audit==140102&&getinfo.outboundStatus==140000}}">
+        <view class="cardtit bodb">物流出库</view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">出库日期</view>
+            <view class="formcont formarrow flex2">
+                <picker bindchange="bindDateChange" data-item="chuku" mode="date" value="{{date}}">
+                    <input disabled class="forminner formpic" placeholder="请选择时间" value="{{chukudate}}"></input>
+                </picker>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">出库地址</view>
+            <view class="formcont flex2">
+                <input bindinput="contentadress" class="forminner" placeholder="请输入地址" value="{{outStock.outboundAddress}}"></input>
+            </view>
+        </view>
+    </view>
+    <view class="cardbox" wx:if="{{getinfo.outboundStatus==140001}}">
+        <view class="cardtit bodb">出库状态 <text class="outstatu">已出库</text>
+        </view>
+    </view>
+    <view class="btnbox" wx:if="{{identityCode==21002&&getinfo.audit==140102}}">
+        <button bindtap="pagesFn">返回</button>
+        <button bindtap="outStock" class="submit" wx:if="{{getinfo.outboundStatus==140000&&getinfo.audit==140102}}">确认出库</button>
+    </view>
+    <view class="btnbox" wx:if="{{identityCode==21003}}">
+        <button bindtap="pagesFn">返回</button>
+        <button bindtap="approve" class="submit" wx:if="{{getinfo.outboundStatus==140000&&getinfo.audit!=140102}}">确认提交</button>
+    </view>
+</view>

@@ -1,0 +1,26 @@
+<view>
+    <view class="searchbox flexbox" wx:if="{{dataId}}">
+        <view bindtap="returnback" class="returnbtn">返回上一级</view>
+    </view>
+    <view class="contenbox">
+        <scroll-view bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="upper" scrollIntoView="{{toView}}" scrollTop="{{scrollTop}}" scrollY="true" style="height: 100%" wx:if="{{list.length>0}}">
+            <view class="padlr ">
+                <view bindtap="jumpnext" class="" data-item="{{item.id}}" wx:for="{{list}}" wx:key="index">
+                    <view class="formarrow filelist flexbox fle-st">
+                        <image src="../../images/home_icon/file.png"></image>
+                        <view>{{item.folderName}}</view>
+                    </view>
+                    <view class="flexbox fle-sb" wx:for="{{item.tblManagementFileResponse.items}}" wx:for-index="index2" wx:for-item="item2">
+                        <view class="filrico">
+                            <image mode="widthFix" src="../../images/zgimg/pdfico.png"></image>{{item2.fileName}}</view>
+                        <view class="flexbox fle-sb">
+                            <view catchtap="previewFile" class="textbtn" data-item="{{item2.fileUrl}}">查看</view>
+                            <view catchtap="previewFile" class="textbtn" data-item="{{item2.fileUrl}}">下载</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+        <view wx:else>暂无数据</view>
+    </view>
+</view>

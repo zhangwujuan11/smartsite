@@ -1,0 +1,127 @@
+<view style="position: absolute; top:0;width: 100%;" wx:if="{{chart_type=='weather_chart'||chart_type=='weather_table'}}">
+    <view class="tabbar">
+        <view bindtap="swichNav" class="tab-item {{currentTab==item.type?'on':''}}" data-type="{{item.type}}" wx:for="{{tabs}}" wx:key="index">{{item.name}}</view>
+    </view>
+</view>
+<view style="padding: 0 30rpx;">
+    <block wx:if="{{chart_type=='weather_chart'}}">
+        <view class="move-container" wx:if="{{currentTab=='map'}}">
+            <view class="view">
+                <ec-canvas canvasId="pm25Chart" ec="{{pm25Chart}}" id="pm25Chart"></ec-canvas>
+                <view style="position: absolute;top:5%;left: 5%;">
+                    <view style="display: flex;align-items: center;flex-direction: row;">
+                        <view style="width: 28rpx;height:28rpx;background-color:#1377FE ;border-radius: 5rpx;"></view>
+                        <view style="padding-left: 20rpx;">PM2.5</view>
+                    </view>
+                </view>
+            </view>
+            <view class="view">
+                <ec-canvas canvasId="pm10Chart" ec="{{pm10Chart}}" id="pm10Chart"></ec-canvas>
+                <view style="position: absolute;top:5%;left: 5%;">
+                    <view style="display: flex;align-items: center;flex-direction: row;">
+                        <view style="width: 28rpx;height:28rpx;background-color:#C28FFE ;border-radius: 5rpx;"></view>
+                        <view style="padding-left: 20rpx;">PM10</view>
+                    </view>
+                </view>
+            </view>
+            <view class="view">
+                <ec-canvas canvasId="noiseChart" ec="{{noiseChart}}" id="noiseChart"></ec-canvas>
+                <view style="position: absolute;top:5%;left: 5%;">
+                    <view style="display: flex;align-items: center;flex-direction: row;">
+                        <view style="width: 28rpx;height:28rpx;background-color:#FFCE41 ;border-radius: 5rpx;"></view>
+                        <view style="padding-left: 20rpx;">噪声</view>
+                    </view>
+                </view>
+            </view>
+            <view class="view">
+                <ec-canvas canvasId="temChart" ec="{{temChart}}" id="temChart"></ec-canvas>
+                <view style="position: absolute;top:5%;left: 5%;">
+                    <view style="display: flex;align-items: center;flex-direction: row;">
+                        <view style="width: 28rpx;height:28rpx;background-color:#ABED94 ;border-radius: 5rpx;"></view>
+                        <view style="padding-left: 20rpx;">温度</view>
+                    </view>
+                </view>
+            </view>
+            <view class="view">
+                <ec-canvas canvasId="humChart" ec="{{humChart}}" id="humChart"></ec-canvas>
+                <view style="position: absolute;top:5%;left: 5%;">
+                    <view style="display: flex;align-items: center;flex-direction: row;">
+                        <view style="width: 28rpx;height:28rpx;background-color:#FE4571 ;border-radius: 5rpx;"></view>
+                        <view style="padding-left: 20rpx;">湿度</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style="margin-top:105rpx;" wx:elif="{{currentTab=='table'}}">
+            <s-table config="{{tableConfig}}" headers="{{headers}}" keys="{{keys}}" rows="{{table_rows}}" table="{{table}}"></s-table>
+        </view>
+    </block>
+    <block wx:elif="{{chart_type=='salary'}}">
+        <view style="margin-top:30rpx;">
+            <s-table config="{{tableConfig}}" headers="{{headersSalary}}" keys="{{keysSalary}}" rows="{{table_rows}}" table="{{table}}"></s-table>
+        </view>
+        <view style="font-size: 28rpx;display: flex;justify-content: center;margin-top:10rpx;">{{summary_str}}</view>
+    </block>
+    <block wx:elif="{{chart_type=='entrance'}}">
+        <view class="searchbox">
+            <input bindinput="searchtext" data-type="title" placeholder="请输入搜索关键字" value="{{keyword}}"></input>
+        </view>
+        <view style="margin-top:30rpx;">
+            <s-table config="{{tableConfig}}" headers="{{headersEntrence}}" keys="{{keysEntrence}}" rows="{{table_rows}}" table="{{table}}"></s-table>
+        </view>
+    </block>
+    <block wx:elif="{{chart_type=='concrete'}}">
+        <view class="searchbox">
+            <input bindinput="searchtext" data-type="title" placeholder="请输入搜索关键字" value="{{keyword}}"></input>
+        </view>
+        <view style="margin-top:30rpx;">
+            <s-table config="{{tableConfig}}" headers="{{headersConcret}}" keys="{{keyConcret}}" rows="{{table_rows}}" table="{{'concrete'}}"></s-table>
+        </view>
+        <view class="pickerbox" wx:if="{{pickyes2}}">
+            <picker-view bindchange="bindChange2" indicatorStyle="height: 50px;" style="width: 100%; height:700rpx;position: absolute;z-index: 999;bottom:0px;">
+                <view class="btns">
+                    <view bindtap="getValue2">确认</view>
+                </view>
+                <picker-view-column>
+                    <view class="pickercon" style="line-height: 50px; text-align: center;" wx:for="{{processorDeptList2}}" wx:key="id">{{item.companyName}}</view>
+                </picker-view-column>
+            </picker-view>
+        </view>
+    </block>
+    <block wx:elif="{{chart_type=='SteelLab'}}">
+        <view class="searchbox">
+            <input bindinput="searchtext" data-type="title" placeholder="请输入搜索关键字" value="{{keyword}}"></input>
+        </view>
+        <view style="margin-top:30rpx;">
+            <s-table  config="{{tableConfi}}" headers="{{headersSeelab}}" keys="{{keySeelab}}" rows="{{table_rows}}"  table="SteelLab"></s-table>
+        </view>
+        <view class="pickerbox" wx:if="{{pickyes}}">
+            <picker-view bindchange="bindChange" indicatorStyle="height: 50px;" style="width: 100%; height:700rpx;position: absolute;z-index: 999;bottom:0px;">
+                <view class="btns">
+                    <view bindtap="getValue">确认</view>
+                </view>
+                <picker-view-column>
+                    <view class="pickercon" style="line-height: 50px; text-align: center;" wx:for="{{processorDeptList}}" wx:key="id">{{item.companyName}}</view>
+                </picker-view-column>
+            </picker-view>
+        </view>
+    </block>
+    <view style="margin-top:30rpx;" wx:elif="{{chart_type=='cementlab'}}">
+        <s-table config="{{tableConfig}}" headers="{{headersCementlab}}" keys="{{keyCementlab}}" rows="{{table_rows}}" table="{{table}}"></s-table>
+    </view>
+    <view class="pages_box" wx:if="{{(chart_type=='entrance'||chart_type=='salary'||chart_type=='cementlab'||chart_type=='SteelLab'||chart_type=='concrete'||chart_type=='weather_chart'&&currentTab=='table')&&page_list.length>0}}">
+        <view bindtap="pagesFn" class="page_next {{pagesNum==0?'active':''}}" data-num="0">
+            <image src="/images/left.png" style="width:25rpx;height:25rpx;"></image>
+            <view>上一页</view>
+        </view>
+        <view bindtap="pagesFn" class="{{page_now==item+1?'active':''}}" data-num="{{item+1}}" style="border-radius: 50%;display: flex; align-items: center;justify-content: center;position: relative;" wx:for="{{page_list}}" wx:key="index">
+            <view style="position: absolute;">{{item-0+1}}</view>
+        </view>
+        <view class="inputbx">
+            <input bindconfirm="contentInput" class="forminner forminput" confirmType="go" type="text" value="{{page_now}}"></input>/{{page_total}} </view>
+        <view bindtap="pagesFn" class="page_next {{pagesNum==-1?'active':''}}" data-num="-1">
+            <view>下一页</view>
+            <image src="/images/right.png" style="width:25rpx;height:25rpx;"></image>
+        </view>
+    </view>
+</view>

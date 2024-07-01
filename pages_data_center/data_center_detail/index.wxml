@@ -1,0 +1,14 @@
+<view style="padding: 30rpx;">
+    <view class="formtext flexbox fle-st bodb" wx:for="{{labelValueObj}}" wx:for-index="key" wx:for-item="value" wx:key="key">
+        <view class="labeltip">{{labelValueObj[key]}}:</view>
+        <view class="formcont flex2">
+            <input bindinput="changeValue" class="forminner" data-key="{{key}}" placeholder="请输入" value="{{dataContent[key]}}"></input>
+        </view>
+    </view>
+    <view class="formtext flexbox fle-st bodb" wx:if="{{tableType!=='CementLab'}}">
+        <view class="labeltip">绑定数据:</view>
+        <view class="formcont flex2">
+            <view bindtap="jumptbind" class="bgg clbtn" data-item="{{dataContent.sampleNo}}"  data-depid="{{dataContent.constructionId}}">点击查看</view>
+        </view>
+    </view>
+</view>

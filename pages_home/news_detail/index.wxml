@@ -1,0 +1,27 @@
+<import src="../../Component/wxParse/wxParse.wxml"></import>
+<view style="margin-top:30rpx;padding:0 30rpx;">
+    <loading hidden="{{!loading}}">加载中...</loading>
+    <view style="display:flex; text-align: center;  justify-content: center;flex-direction: column;">
+        <view style="font-size:36rpx;font-weight: bold; color:#3E3D3B;"> {{news_dict.mfteTitle}}</view>
+        <view style="margin-top:20rpx;color:#B9C2D3;font-size:26rpx;font-weight: regular;">{{news_dict.mfteCreateTime}} </view>
+    </view>
+    <view style="margin-top:40rpx;font-size: 30rpx; ">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+    </view>
+    <view style="display: flex;justify-content: center;">
+        <view wx:if="{{img_list.length!==0}}">
+            <view class="img-upload">
+                <view wx:for="{{img_list}}" wx:key="index">
+                    <image bindtap="previewImage" data-index="{{index}}" src="{{item}}" style="margin-top:10rpx;background-color: #F4F7FC;height: 900rpx;width:690rpx;border-radius: 10rpx; box-shadow:0 10rpx 15rpx 0 #DDDDDD"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="container">
+        <view class="divLine"></view>
+    </view>
+    <view wx:if="{{type=='rectify'|type=='quality_main'}}">
+        <view style="height: 130rpx;"></view>
+        <view class="anniu"></view>
+    </view>
+</view>

@@ -1,0 +1,62 @@
+page {
+  background: #f4f5f9;
+  height: 100%;
+  position: fixed;
+}
+.fontColorBox,
+.fontColorBox1 {
+  color: #000;
+}
+.navBox {
+  align-items: center;
+  background: #fff;
+  display: -webkit-flex;
+  display: flex;
+  height: 108rpx;
+  justify-content: center;
+  width: 100%;
+}
+.navBox view:last-child {
+  padding-left: 20%;
+}
+.titleBox {
+  align-items: center;
+  color: #a8aaaf;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+}
+.lineBox,
+.notLineBox {
+  height: 8rpx;
+  width: 32rpx;
+}
+.lineBox {
+  background: #2b2c2d;
+  border-radius: 4rpx;
+  margin-top: 16rpx;
+}
+.notLineBox {
+  background: transparent;
+}
+.swiperTtemBox {
+  background: #fff;
+  font-size: 28rpx;
+  height: 100vh;
+  margin: 12rpx 0rpx;
+  overflow: scroll;
+}
+.swiperTtemBox .title {
+  text-align: center;
+}
+.swiperTtemBox view {
+  box-sizing: border-box;
+  font-size: 12px;
+  line-height: 28px;
+  padding: 0 10px;
+  text-indent: 28px;
+}
+.concont {
+  margin-bottom: 100px;
+}

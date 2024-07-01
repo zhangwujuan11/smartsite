@@ -1,0 +1,16 @@
+@import "/pages_quality_main/init/index.wxss";
+.workbench .body .img-upload .img-item {
+  border: 1rpx dashed #ddd;
+  float: left;
+  height: 160rpx;
+  margin: 20rpx;
+  width: 180rpx;
+}
+.wxParse-inline {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+.WxEmojiView {
+  align-items: center;
+}

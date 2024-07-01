@@ -1,0 +1,89 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/other/index",
+    "pages/video_monitor/index",
+    "pages/login/index",
+    "pages/bim/index",
+    "pages/login_caceal/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#004099",
+    "navigationBarTitleText": "智慧工地",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F4F7FC",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "backgroundColor": "#F4F7FC",
+    "color": "#B9C2D3",
+    "selectedColor": "#004998",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/home/index",
+        "iconPath": "images/tabbar_icon/home.png",
+        "selectedIconPath": "images/tabbar_icon/home_blue.png"
+      },
+   
+      {
+        "text": "监控",
+        "pagePath": "pages/video_monitor/index",
+        "iconPath": "images/tabbar_icon/monitor.png",
+        "selectedIconPath": "images/tabbar_icon/monitor_blue.png"
+      },
+      {
+        "text": "数据中心",
+        "pagePath": "pages/other/index",
+        "iconPath": "images/tabbar_icon/data_center.png",
+        "selectedIconPath": "images/tabbar_icon/data_center_blue.png"
+      }
+    ]
+  },
+  "subPackages": [
+    {
+      "root": "pages_home/",
+      "pages": [
+        "news/index",
+        "news_detail/index",
+        "party_building/index",
+        "profile/index",
+        "brige/index",
+        "brige_detailed/index",
+        "brige_det/index"
+      ]
+    },
+    {
+      "root": "pages_rectification/",
+      "pages": [
+        "init/index",
+        "main/index",
+        "rectify_detail/index",
+        "recify_detail_new/index",
+        "recify_detail_edit/index"
+      ]
+    },
+    {
+      "root": "pages_quality_main/",
+      "pages": [
+        "init/index",
+        "main/index",
+        "comment/comment",
+        "news_detail/index",
+        "CommentDetail/commentDetail",
+        "recify_detail_new/index",
+        "recify_detail_edit/index"
+      ]
+    },
+    {
+      "root": "pages_data_center/",
+      "pages": [
+        "data_center_chart/index",
+        "data_center_detail/index",
+        "data_center_detail_bind/index"
+      ]
+    }
+  ],
+  "style": "v2"
+}

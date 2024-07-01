@@ -1,0 +1,2 @@
+<canvas bindinit="init" bindtouchend="{{ec.disableTouch?'':'touchEnd'}}" bindtouchmove="{{ec.disableTouch?'':'touchMove'}}" bindtouchstart="{{ec.disableTouch?'':'touchStart'}}" canvasId="{{canvasId}}" class="ec-canvas" type="2d" wx:if="{{isUseNewCanvas}}"></canvas>
+<canvas bindinit="init" bindtouchend="{{ec.disableTouch?'':'touchEnd'}}" bindtouchmove="{{ec.disableTouch?'':'touchMove'}}" bindtouchstart="{{ec.disableTouch?'':'touchStart'}}" canvasId="{{canvasId}}" class="ec-canvas" wx:else></canvas>

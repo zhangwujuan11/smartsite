@@ -1,0 +1,49 @@
+<view>
+    <view class="nadata" wx:if="{{nadata}}">
+        <image src="../../images/home_icon/nodata.png"></image>
+        <text>暂无数据</text>
+    </view>
+    <view wx:if="{{!nadata}}">
+        <view class="topserch">
+            <icon class="searchicon" size="20" type="search"></icon>
+            <input bindinput="serchlist" placeholder="请输入关键字搜索" type="text" value="{{serinput}}"></input>
+            <button bindtap="goserch" style="width: 116rpx;font-size: 28rpx;padding: 0;margin: 0;" type="primary">搜索</button>
+        </view>
+        <view class="selectcon">
+            <picker bindchange="bindPickerChange" data-type="audit" mode="selector" range="{{examineList}}" rangeKey="{{'label'}}" value="{{value}}">
+                <view class="picker"> 审批状态 <image src="../../images/home_icon/down.jpg" style="width: 32rpx;height: 22rpx;"></image>
+                </view>
+            </picker>
+            <picker bindchange="bindPickerChange" data-type="outBoundStatus" mode="selector" range="{{outboundList}}" rangeKey="{{'label'}}" value="{{value}}">
+                <view class="picker"> 出库状态 <image src="../../images/home_icon/down.jpg" style="width: 32rpx;height: 22rpx;"></image>
+                </view>
+            </picker>
+        </view>
+        <view class="bridgedata">
+            <view bindtap="gobride" class="bridgeli" data-id="{{item.girderId}}" wx:for="{{bridgelist}}" wx:key="index">
+                <view class="bridgelitop" style="border-bottom: 1px solid #EBEBEB;">
+                    <view class="bridgeid"> {{item.girderId}} </view>
+                    <text class="pass" wx:if="{{item.audit==140102&&item.outboundStatus==140000}}">通过</text>
+                    <text class="wating" wx:if="{{item.audit==140101&&item.outboundStatus==140000}}">待审核</text>
+                    <text class="fail" wx:if="{{item.audit==140103&&item.outboundStatus==140000}}">不通过</text>
+                    <text class="over" wx:if="{{item.audit==140102&&item.outboundStatus==140001}}">已出库</text>
+                </view>
+                <view class="bridgelibow">
+                    <view>
+                        <text class="label">梁片名称</text>
+                        <text class="labelcon">{{item.girderName}}</text>
+                    </view>
+                    <view>
+                        <text class="label">入库日期</text>
+                        <text class="labelcon" wx:if="{{item.inboundDate!=null}}">{{item.inboundDate}}</text>
+                        <text class="labelcon" wx:else>-</text>
+                    </view>
+                </view>
+                <view class="bridgebtn" wx:if="{{item.audit==1&&item.outboundStatus==0}}">
+                    <button class="logistics" style="width: 180rpx;height: 80rpx;padding: 0;margin: 0;">物流出库</button>
+                </view>
+            </view>
+        </view>
+    </view>
+    <image bindtap="cameropen" class="ercamer" src="../../images/home_icon/ercamer.png" wx:if="{{identityCode==21002}}"></image>
+</view>

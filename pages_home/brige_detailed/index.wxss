@@ -1,0 +1,18 @@
+.btnbox {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  width: 100%;
+}
+.btnbox button {
+  background-color: #fff;
+  font-size: 28rpx;
+  margin: 0;
+  padding: 20rpx 0;
+  width: 332rpx;
+}
+.btnbox .submit {
+  background-color: #ff9d22;
+  color: #fff;
+}

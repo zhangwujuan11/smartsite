@@ -1,0 +1,439 @@
+@import "/Component/wxParse/wxParse.wxss";
+
+.container {
+  background-color: var(--weui-BG-0);
+  color: var(--weui-FG-0);
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 16px;
+  min-height: 100%;
+}
+
+page {
+  background-color: #f4f7fc;
+}
+
+.iconfont {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: iconfont !important;
+  font-size: 30px;
+  font-style: normal;
+}
+
+.icon-computer:before {
+  content: "\e69f";
+}
+
+.icon-toast:before {
+  content: "\e6a1";
+}
+
+.icon-watch:before {
+  content: "\e6a4";
+}
+
+.icon-book:before {
+  content: "\e6a5";
+}
+
+.icon-inbox:before {
+  content: "\e6a7";
+}
+
+.icon-light_bulb:before {
+  content: "\e6a9";
+}
+
+.icon-unlock:before {
+  content: "\e6ab";
+}
+
+.icon-inbox1:before {
+  content: "\e6ac";
+}
+
+.icon-store:before {
+  content: "\e6ad";
+}
+
+.icon-spen:before {
+  content: "\e6af";
+}
+
+.icon-search:before {
+  content: "\e6b1";
+}
+
+.icon-inbox2:before {
+  content: "\e600";
+}
+
+.icon-zuwang-jianyue:before {
+  content: "\e626";
+}
+
+.icon-lock:before {
+  content: "\e601";
+}
+
+.icon-lock1:before {
+  content: "\e602";
+}
+
+.icon-jiantou_shang:before {
+  content: "\eaa9";
+}
+
+.icon-jiantou_you:before {
+  content: "\eaaa";
+}
+
+.icon-jiantou_zuo:before {
+  content: "\eaab";
+}
+
+.icon-computer1:before {
+  content: "\e603";
+}
+
+.icon-page:before {
+  content: "\e8c1";
+}
+
+.icon-yanzhengma-dunpai:before {
+  content: "\e60e";
+}
+
+.icon-zujian:before {
+  content: "\e93c";
+}
+
+.icon-bofang:before {
+  content: "\e698";
+}
+
+.icon-zhongxinjifen:before {
+  content: "\e6c9";
+}
+
+.icon-tubiao:before {
+  content: "\e757";
+}
+
+@font-face {
+  font-family: iconfont;
+  src: url("//at.alicdn.com/t/font_2845464_otmtpvqi86s.woff2?t=1633880291646") format("woff2"), url("//at.alicdn.com/t/font_2845464_otmtpvqi86s.woff?t=1633880291646") format("woff"), url("//at.alicdn.com/t/font_2845464_otmtpvqi86s.ttf?t=1633880291646") format("truetype");
+}
+
+.icon-zhiliangbaozheng-copy:before {
+  content: "\e638";
+}
+
+.icon-zhenggaidanfankui-copy:before {
+  content: "\e625";
+}
+
+.icon-zixun-copy:before {
+  content: "\ea4d";
+}
+
+.icon-dangjianhuodong-copy:before {
+  content: "\e7b4";
+}
+
+.icon-a-BIMGIS:before {
+  content: "\e781";
+}
+
+.icon-shiliangtu:before {
+  content: "\e60e";
+}
+
+.icon-xunchaguanli:before {
+  content: "\e612";
+}
+
+.icon-xunchazhenggai1:before {
+  content: "\e7b3";
+}
+
+.icon-shipinjiankong2:before {
+  content: "\e62c";
+}
+
+.icon-faqizhenggaidan:before {
+  content: "\e62b";
+}
+
+.icon-dangjianzhongxin:before {
+  content: "\e6aa";
+}
+
+.icon-shipinjiankong:before {
+  content: "\e60d";
+}
+
+.icon-xinwenzhongxin:before {
+  content: "\e628";
+}
+
+.icon-BIMGIS:before {
+  content: "\e63c";
+}
+
+.icon-shigongdui:before {
+  content: "\e63f";
+}
+
+.icon-xunchazhenggai:before {
+  content: "\e60c";
+}
+
+.icon-chakanzhenggai:before {
+  content: "\e68f";
+}
+
+.icon-wuliaozhongxin:before {
+  content: "\e60a";
+}
+
+.icon-shipinjiankong1:before {
+  content: "\e7a5";
+}
+
+.icon-hangpaishipin:before {
+  content: "\e640";
+}
+
+@font-face {
+  font-family: iconfont;
+  src: url("//at.alicdn.com/t/font_2807626_yekoffi0dpl.woff2?t=1631457917721") format("woff2"), url("//at.alicdn.com/t/font_2807626_yekoffi0dpl.woff?t=1631457917721") format("woff"), url("//at.alicdn.com/t/font_2807626_yekoffi0dpl.ttf?t=1631457917721") format("truetype");
+}
+
+.workbench {
+  margin-top: 30rpx;
+}
+
+.title {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  color: #3e3d3b;
+  display: -webkit-box;
+  font-weight: 520;
+  overflow: auto;
+  padding: 0;
+  text-align: left;
+}
+
+.workbench .list {
+  display: -webkit-flex;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.workbench .items {
+  align-items: center;
+  background: #fff;
+  border-radius: 15rpx;
+  color: #3e3d3b;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  font-size: 24rpx;
+  height: 166rpx;
+  justify-content: center;
+  margin-top: 30rpx;
+  width: 320rpx;
+}
+
+.workbench .cover {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  height: 430rpx;
+  justify-content: space-between;
+}
+
+.workbench .cover,
+.workbench .introduct {
+  border-radius: 10rpx;
+  vertical-align: bottom;
+  width: 690rpx;
+}
+
+.workbench .introduct {
+  height: 370rpx;
+}
+
+.tabbar {
+  align-items: center;
+  background-color: #fff;
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+
+.tab-item {
+  color: #b9c2d3;
+  font-size: 30rpx;
+  padding-bottom: 16rpx;
+  padding-top: 16rpx;
+}
+
+.swiper {
+  background: #f6f0ed;
+  height: 1100px;
+}
+
+.on {
+  align-items: center;
+  color: #f75351;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.on::after {
+  background-color: #f75351;
+  border-radius: 10rpx;
+  bottom: 16rpx;
+  content: "";
+  display: block;
+  height: 4rpx;
+  margin-top: 11rpx;
+  width: 110rpx;
+}
+
+.searchbox input {
+  background-color: #fefefe;
+  border: 1rpx solid #eee;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 20rpx;
+}
+
+.frombox_out {
+  background: #f5f5ff;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+
+.cardbox {
+  background: #fff;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  margin: 30rpx 0;
+  padding: 10rpx 20rpx 20rpx;
+}
+
+.cardtit {
+  font-size: 26rpx;
+  font-weight: 700;
+  line-height: 80rpx;
+}
+
+.bodb {
+  border-bottom: 1px solid #f5f5ff;
+}
+
+.flexbox {
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.fle-sb {
+  justify-content: space-between;
+}
+
+.fle-sa {
+  justify-content: space-around;
+}
+
+.fle-st {
+  justify-content: start;
+}
+
+.verait {
+  align-items: end !important;
+}
+
+.formtext {
+  font-size: 24rpx;
+  line-height: 80rpx;
+}
+
+.formcont {
+  box-sizing: border-box;
+  padding-left: 20rpx;
+}
+
+.formarrow {
+  position: relative;
+}
+
+.formarrow::after {
+  border-color: #d9d9d9;
+  border-style: solid;
+  border-width: 0 0 2px 2px;
+  content: "";
+  display: inline-block;
+  height: 0.5rem;
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  transform: rotate(225deg);
+  width: 0.5rem;
+}
+
+.dialogbox {
+  background: rgba(0, 0, 0, 0.2);
+  height: 100vh;
+  left: 0;
+  overflow-y: hidden;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 333;
+}
+
+.diabody {
+  height: -webkit-fit-content;
+  height: fit-content;
+  margin: 20vh auto;
+  max-height: 80vh;
+  overflow-y: scroll;
+  width: -webkit-fit-content;
+  width: fit-content;
+}
+
+.diacontent {
+  width: 80vw;
+}
+
+.btnbox {
+  padding: 20rpx;
+}
+
+.labeltip {
+  color: #3e3d3b;
+  width: 100rpx;
+}
+
+.flex2 {
+  flex: 2;
+}
+
+.formpic {
+  height: 100%;
+  width: 100%;
+}

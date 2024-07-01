@@ -1,0 +1,130 @@
+<view class="recifydetailbox frombox_out">
+    <view class="cardbox">
+        <view class="cardtit bodb">施工信息</view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">整改标题</view>
+            <view class="formcont flex2">
+                <input bindinput="contentInput" class="forminner" data-type="title" placeholder="请输入整改标题" value="{{rectifyFormData.title}}"></input>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">发起时间</view>
+            <view class="formcont formarrow flex2">
+                <picker bindchange="bindDateChange" data-item="launchTime" mode="date" value="{{date}}">
+                    <input disabled class="forminner formpic" placeholder="请选择发起时间" value="{{timeStart}}"></input>
+                </picker>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">完成时间</view>
+            <view class="formcont formarrow flex2">
+                <picker bindchange="bindDateChange" data-item="finishTime" mode="date" value="{{date}}">
+                    <input disabled class="forminner formpic" placeholder="请选择完成时间" value="{{timeEnd}}"></input>
+                </picker>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">标段</view>
+            <view class="formcont formarrow flex2">
+                <picker bindchange="bindPickerChange" data-type="cljs" mode="selector" range="{{processorDeptList}}" rangeKey="{{'sectionName'}}" value="{{index}}">
+                    <input disabled class="forminner formpic" placeholder="请选择标段" value="{{processorDeptName}}"></input>
+                </picker>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb" wx:if="{{processorDeptName!=''}}">
+            <view class="labeltip">部门</view>
+            <view class="formcont formarrow flex2">
+                <picker bindchange="bindbumenchange" data-type="bm" mode="selector" range="{{bumenList}}" rangeKey="{{'deptName'}}" value="{{index}}">
+                    <input disabled class="forminner formpic" placeholder="请选择标段" value="{{deptName}}"></input>
+                </picker>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb" wx:if="{{processorDeptName!=''&&deptName!=''}}">
+            <view class="labeltip">责任人</view>
+            <view class="formcont  flex2">
+                <input disabled class="forminner formpic" value="{{userName}}"></input>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">手机号</view>
+            <view class="formcont flex2">
+                <input class="forminner" data-type="tel" placeholder="请输入负责人手机号" value="{{userPhone}}"></input>
+            </view>
+        </view>
+        <view class="formtext flexbox verait fle-st bodb">
+            <view class="labeltip">抄送</view>
+            <view class="formcont flex2">
+                <checkbox-group bindchange="checkboxChange">
+                    <label class="radio" wx:for="{{senobj}}">
+                        <checkbox checked="{{item.checked}}" value="{{item.id}}"></checkbox>{{item.name}} </label>
+                </checkbox-group>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <label class="checkbox">
+                <checkbox value="{{rectifyFormData.sendSms}}"></checkbox>是否发送手机短信提醒 </label>
+        </view>
+    </view>
+    <view class="cardbox" wx:for="{{rectifyFormData.rectifyProblemUpdates}}" wx:for-index="indexfor">
+        <view class="cardtit bodb">整改内容</view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">隐患点</view>
+            <view class="formcont formarrow flex2">
+                <picker bindchange="bindPickerChange" data-index="{{indexfor}}" data-type="zgcontent" mode="selector" range="{{dangerlist}}" rangeKey="{{'name'}}" value="{{index}}">
+                    <input disabled class="forminner formpic" placeholder="请选择隐患点" value="{{item.hidDangerName}}"></input>
+                </picker>
+            </view>
+        </view>
+        <view class="flexbox">
+            <view bindtap="setDataType" class="{{item.dataType==1?'acbtn zgbtn':'zgbtn'}}" data-index="{{indexfor}}" data-item="1">安全整改</view>
+            <view bindtap="setDataType" class="{{item.dataType==2?'acbtn zgbtn':'zgbtn'}}" data-index="{{indexfor}}" data-item="2">质量整改</view>
+        </view>
+        <view class="formtext verait flexbox fle-st bodb">
+            <view class="flex2">
+                <textarea bindinput="contentInput" class="forminner" data-index="{{indexfor}}" data-type="context" data-usefor="zhengai" placeholder="请输入整改内容" value="{{item.context}}"></textarea>
+            </view>
+        </view>
+        <view class="formtext flexbox verait fle-st bodb">
+            <view class="labeltip">照片</view>
+            <view class="formcont flex2">
+                <view class="img-upload">
+                    <view bindlongtap="deleteImage" class="img-item" data-index="{{index}}" data-index2="{{indexfor}}" data-usefor="zhengai" wx:for="{{item.images}}" wx:for-item="imgitem" wx:key="index">
+                        <image bindtap="previewImage" data-index="{{index}}" data-index2="{{indexfor}}" data-usefor="zhengai" mode="aspectFill" src="{{imgitem}}"></image>
+                    </view>
+                    <view bindtap="chooseImage" class="img-add" data-index="{{indexfor}}" data-useFor="zhengai">
+                        <image src="../images/sc.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="formtext flexbox verait fle-st bodb">
+            <view class="labeltip">附件</view>
+            <view class="formcont flex2">
+                <view class="">
+                    <view bindtap="chooseFiletoUpload" class="file-add" data-index="{{indexfor}}" data-usefor="zhengai"> 上传pdf文件（小于50M） </view>
+                    <view bindlongtap="deleteFile" class="file-item" data-index="{{index}}" data-index2="{{indexfor}}" data-usefor="zhengai" wx:for="{{item.attachments}}" wx:for-item="fileitem" wx:key="index">
+                        <view class="flexbox fle-sb">
+                            <view class="filrico">
+                                <image mode="widthFix" src="../../images/zgimg/pdfico.png"></image>整改方案{{index+1}}</view>
+                            <view class="flexbox fle-sb">
+                                <view bindtap="previewFile" class="textbtn" data-item="{{fileitem}}">查看</view>
+                                <view bindtap="previewFile" class="textbtn" data-item="{{fileitem}}">下载</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view>
+        <view bindtap="addZgbox" class="addbtn">
+            <view class="box"> 添加整改内容 </view>
+        </view>
+    </view>
+    <view class="flexbox formbottm fle-sb">
+        <view bindtap="deleteDealInfo" class="bgr formbtn">删除</view>
+        <view bindtap="returnpage" class="formbtn">取消</view>
+        <view bindtap="submitBtnClickcg" class="bgg formbtn">保存</view>
+        <view bindtap="submitBtnClick" class="bgb formbtn">发起整改</view>
+    </view>
+</view>

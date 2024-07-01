@@ -1,0 +1,33 @@
+<view class="container">
+    <view class="monitor-tabbar" id="monitor-tab">
+        <view bindtap="swichNav" class="monitor-tab-item {{currentTab==index?'on':''}}" data-current="{{index}}" wx:for="{{tabs}}" wx:key="index">{{item.name}}</view>
+    </view>
+    <view class="searchbox">
+        <input bindinput="searchtext" data-type="title" placeholder="请输入搜索关键字" value="{{keyword}}"></input>
+    </view>
+    <view class="news">
+        <view class="page-body" wx:for="{{data_list}}" wx:key="id">
+            <navigator url="{{item.status==10004?'../recify_detail_new/index?id='+item.rectifyId+'&type=rectify':'../recify_detail_edit/index?id='+item.rectifyId+'&type=rectify'}}">
+                <view class="item">
+                    <view class="meta">
+                        <text class="title">{{item.title}}</text>
+                        <view style="display:flex;flex-direction: row;align-items:center;position: relative;">
+                            <view class="titles" style="width: 600rpx;">创建时间：{{item.createTime}} </view>
+                            <text style="font-size: 24rpx"></text>
+                        </view>
+                        <view style="display:flex;margin-top:10rpx;flex-direction: row;align-items:center;position: relative;">
+                            <view class="titles">状态: </view>
+                            <text class="box-rank-number {{item.status!=10000?'rank-bg':''}}">{{item.statusDesc}}</text>
+                        </view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+    </view>
+    <view class="loading" hidden="{{!searchLoading}}">正在载入数据...</view>
+    <view style="height: 130rpx;"></view>
+    <view class="baise"></view>
+    <view class="anniu" wx:if="{{identityCode!==21002}}">
+        <view catchtap="open" class="btn" data-name="recify_detail_new">发起整改</view>
+    </view>
+</view>

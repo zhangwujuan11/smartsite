@@ -1,0 +1,7 @@
+ {
+   "usingComponents": {
+     "ec-canvas": "../../ec-canvas/ec-canvas",
+     "s-table": "../../Component/s-table/s-table"
+   },
+   "navigationBarTitleText": "气象数据"
+ }

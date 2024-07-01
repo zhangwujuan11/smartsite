@@ -1,0 +1,70 @@
+<view style="margin-top:30rpx;padding:0 30rpx;">
+    <loading hidden="{{!loading}}">加载中...</loading>
+    <view style="display:flex; text-align: center;  justify-content: center;flex-direction: column;">
+        <view style="font-size:36rpx;font-weight: bold; color:#3E3D3B;"> {{news_dict.mfteTitle}}</view>
+        <view style="margin-top:20rpx;color:#B9C2D3;font-size:26rpx;font-weight: regular;">{{news_dict.mfteCreateTime}} </view>
+    </view>
+    <view style="margin-top:20rpx;font-size: 30rpx; ">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+    </view>
+    <view style="display: flex;justify-content: left;">
+        <view wx:if="{{img_list.length!==0}}">
+            <view class="img-upload">
+                <view wx:for="{{img_list}}" wx:key="index">
+                    <image bindtap="previewImage" data-index="{{index}}" src="{{item}}" style="margin-top:10rpx;background-color: #F4F7FC;height: 140rpx;width:140rpx;border-radius: 10rpx; box-shadow:0 10rpx 15rpx 0 #DDDDDD"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view style="margin-top:20rpx;font-size: 24rpx; ">
+        <tex>完成时间：{{news_dict.finishTime}}</tex>
+    </view>
+    <view class="container">
+        <view class="divLine"></view>
+    </view>
+    <view class="container" style="margin-top: 10rpx;">
+        <view class="divLine"></view>
+    </view>
+    <view style="font-size: 24rpx;margin-top: 10rpx" wx:if="{{tab=='0'}}"> 操作： <view class="weui-cells weui-cells_after-title">
+            <radio-group bindchange="radioChange">
+                <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
+                    <view class="weui-cell__hd">
+                        <radio checked="{{item.checked}}" style="transform:scale(0.6);" value="{{item.value}}"></radio>
+                        <text style="position: relative;top: 4rpx">{{item.name}}</text>
+                    </view>
+                </label>
+            </radio-group>
+        </view>
+    </view>
+    <view class="content" wx:if="{{status=='2'}}">
+        <text class="title">内容</text>
+        <view>
+            <textarea bindinput="contentInput" data-max="200" data-type="content" maxlength="{{noteMaxLen}}" placeholder="请输入描述" value="{{describe}}"></textarea>
+        </view>
+        <text class="title">上传图片（长按删除）</text>
+        <view class="img-upload">
+            <view bindtap="chooseImage" class="img-add">
+                <image src="../images/sc.png"></image>
+            </view>
+            <view bindlongtap="deleteImage" class="img-item" data-index="{{index}}" wx:for="{{uploadimgs}}" wx:key="index">
+                <image bindtap="previewImage" data-index="{{index}}" mode="aspectFill" src="{{item}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="content" wx:if="{{status=='3'}}">
+        <text class="title">备注</text>
+        <view>
+            <textarea bindinput="contentInput" data-max="{{noteMaxLen}}" data-type="content" maxlength="{{noteMaxLen}}" placeholder="请输入描述" value="{{describe}}"></textarea>
+        </view>
+        <text class="title">负责人</text>
+        <view class="body2">
+            <picker bindchange="bindPickerChange" mode="selector" range="{{userList}}" rangeKey="nickName" value="{{index}}">
+                <view class="picker"> 当前选择：{{username}} </view>
+            </picker>
+        </view>
+    </view>
+    <view class="footBar">
+        <button bindtap="back" class="mini-btn" size="mini" type="default">返回</button>
+        <button bindtap="confirm" class="mini-btn" size="mini" type="primary" wx:if="{{status!='1'}}">确定</button>
+    </view>
+</view>

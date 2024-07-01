@@ -1,0 +1,6 @@
+ {
+   "usingComponents": {
+     "recommend": "/Component/recommend/recommend"
+   },
+   "navigationBarTitleText": "工地党建"
+ }

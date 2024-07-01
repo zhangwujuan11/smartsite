@@ -1,0 +1,64 @@
+.btnserch {
+  background: #52ac4a;
+  border-radius: 6px;
+  color: #fff;
+  padding: 10rpx 30rpx;
+}
+.returnbtn {
+  line-height: 60rpx;
+  width: 100%;
+}
+.filrico {
+  margin-bottom: 10rpx;
+  margin-top: 10rpx;
+}
+.filrico image {
+  padding-right: 10rpx;
+  vertical-align: middle;
+  width: 40rpx;
+}
+.textbtn {
+  background: #0fc40f;
+  border-radius: 4rpx;
+  color: #fff;
+  font-size: 20rpx;
+  line-height: 50rpx;
+  margin: 0rpx 8rpx;
+  padding: 0 10rpx;
+}
+.searchbox {
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 8rpx 20rpx;
+}
+.searchbox input {
+  border-radius: 4rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-right: 30rpx;
+  width: 75%;
+}
+.contenbox {
+  padding: 20rpx;
+}
+.contenbox,
+.padlr {
+  box-sizing: border-box;
+}
+.padlr {
+  background: #fff;
+  padding: 10rpx 20rpx;
+}
+.padlr .formarrow::after {
+  top: 30rpx;
+}
+.filelist {
+  align-items: center;
+  border-bottom: 1rpx solid #efefef;
+  line-height: 80rpx;
+}
+.filelist image {
+  height: 50rpx;
+  margin-right: 10rpx;
+  width: 70rpx;
+}

@@ -1,0 +1,17 @@
+<scroll-view class="scrollClass" scrollX="{{config.scroll}}">
+    <view class="s_table {{config.border?'s_table-border':''}}">
+        <view class="s_table-header" style="background-color:{{config.headbgcolor||'#f3f0f0'}};">
+            <view class="s_table-header-column {{config.border?'s_table-header-column-border':''}} {{config.titles.length===index+1?'last-column':''}}" style="width:{{config.columnWidths[index]||'180rpx'}}" wx:for="{{headers}}" wx:key="index"> {{item}} </view>
+        </view>
+        <view class="s_table-content">
+            <view bindtap="getDetail" class="s_table-content-row {{config.stripe?outIndex%2===0?'s_table-row-white':'s_table-row-gray':''}}" data-obj="{{outItem}}" data-pk="{{outItem.id}}"  data-table="{{table}}" wx:for="{{rows}}" wx:for-index="outIndex" wx:for-item="outItem" wx:key="outIndex">
+                <view class="s_table-content-column {{config.border?'s_table-content-column-border':''}}  {{config.titles.length===index+1?'last-column':''}}" style="width:{{config.columnWidths[index]||'180rpx'}};" wx:for="{{keys}}" wx:key="index">
+                    <image bindtap="previewImage" data-src="{{outItem[item]}}" src="{{outItem[item]}}" style="height: 100rpx;width:100rpx;" wx:if="{{item=='faceImg'}}"></image>
+                    <view wx:elif="{{item=='index'}}">{{outIndex+1}}</view>
+                    <view wx:else>{{outItem[item]?outItem[item]:''}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="nodata" wx:if="{{rows.length===0}}">暂无数据</view>
+</scroll-view>

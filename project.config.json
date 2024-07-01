@@ -1,0 +1,29 @@
+{
+    "miniprogramRoot": "",
+    "appid": "wxed4f6efdff63e37d",
+    "compileType": "miniprogram",
+    "libVersion": "3.1.4",
+    "packOptions": {
+        "ignore": [],
+        "include": []
+    },
+    "setting": {
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        },
+        "condition": false,
+        "minified": true,
+        "ignoreDevUnusedFiles": false,
+        "ignoreUploadUnusedFiles": true,
+        "es6": true,
+        "enhance": true,
+        "postcss": true
+    },
+    "condition": {},
+    "editorSetting": {
+        "tabIndent": "auto",
+        "tabSize": 4
+    }
+}

@@ -1,0 +1,15 @@
+<view style="display:flex; text-align: center;  justify-content: center;font-weight:bold;font-size:40rpx;"> 关于“{{data.MFTE_title}}”评论</view>
+<view style="display:flex; text-align: center;  justify-content: center;margin-top:10rpx;">{{data.Comment_create_time}}
+</view>
+<view style="font-size: 35rpx;padding:0 34rpx;margin-top:16rpx;">
+    <view class="WxEmojiView wxParse-inline">{{data.Comment_content}}</view>
+</view>
+<view style="display: flex;justify-content: center;">
+    <view wx:if="{{data.Comment_images.length!==0}}">
+        <view class="img-upload" style="margin-left: 0;">
+            <view wx:for="{{data.Comment_images}}" wx:key="index">
+                <image bindtap="previewImage" data-index="{{index}}" src="{{item}}" style="margin:10rpx 0;background-color: #F4F7FC;height: 900rpx;width:690rpx;border-radius: 10rpx;"></image>
+            </view>
+        </view>
+    </view>
+</view>

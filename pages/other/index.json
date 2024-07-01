@@ -1,0 +1,4 @@
+{
+  "usingComponents": { "ec-canvas": "../../ec-canvas/ec-canvas" },
+  "navigationBarTitleText": "数据中心"
+}

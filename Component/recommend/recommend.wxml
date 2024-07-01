@@ -1,0 +1,13 @@
+<view class="recommend">
+    <view catchtap="goDetail" class="big-box" data-id="{{item.id}}" wx:for="{{recommendArticle}}" wx:key="index">
+        <view class="box-left">
+            <view class="box-rank">
+                <text class="box-rank-number {{index>2?'':'rank-bg'}}">{{index+1>=10?index+1:'0'+index+1}}</text>
+            </view>
+            <text class="title">{{item.title}}</text>
+        </view>
+        <view class="box-right">
+            <image binderror="errImg" data-index="{{index}}" lazyLoad="{{true}}" mode="widthFix" src="{{item.thumb_image[0]||placeholderImg}}"></image>
+        </view>
+    </view>
+</view>

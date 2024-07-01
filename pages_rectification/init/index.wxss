@@ -1,0 +1,79 @@
+.title {
+  color: #b9c2d3;
+  font-size: 26rpx;
+  margin-bottom: 10rpx;
+  margin-left: 30rpx;
+}
+.workbench .body {
+  background: #fff;
+  border: 1rpx solid #b9c2d3;
+  border-radius: 5rpx;
+  font-size: 24rpx;
+  margin: 20rpx 35rpx;
+}
+.img-upload {
+  font-size: 0;
+  margin: 20rpx 35rpx;
+  overflow: hidden;
+}
+.img-upload .img-add,
+.img-upload .img-item {
+  background-color: #fcf9f5;
+  float: left;
+  height: 125rpx;
+  margin-right: 15rpx;
+  width: 125rpx;
+}
+.img-upload image {
+  height: 100%;
+  width: 100%;
+}
+.img-upload .img-item {
+  position: relative;
+}
+.img-upload .img-item icon {
+  position: absolute;
+  right: -12rpx;
+  top: -12rpx;
+}
+.btn {
+  align-items: center;
+  border-radius: 60rpx;
+  color: #3e3b3d;
+  display: -webkit-flex;
+  display: flex;
+  height: 105rpx;
+  justify-content: center;
+  text-align: center;
+  width: 330rpx;
+}
+input {
+  background-color: #fff;
+  border-radius: 5rpx;
+  height: 55rpx;
+  margin-left: 20rpx;
+  width: 660rpx;
+}
+input,
+textarea {
+  font-size: 26rpx;
+}
+textarea {
+  height: 280rpx;
+  margin: 20rpx 0 0 20rpx;
+  width: 680rpx;
+}
+.radioScale {
+  background-color: #fcf9f5;
+  border-color: #e8cda7;
+  margin-left: 25rpx;
+  transform: scale(0.7);
+}
+.phcolor {
+  color: #b9c2d3;
+}
+.picker {
+  height: 56rpx;
+  line-height: 56rpx;
+  padding-left: 10rpx;
+}

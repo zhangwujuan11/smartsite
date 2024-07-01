@@ -1,0 +1,39 @@
+<view class="container">
+    <view class="workbench">
+        <text class="title">标题 {{titleNowLen}}/{{titleMaxLen}}</text>
+        <view class="body">
+            <input bindinput="contentInput" data-max="{{titleMaxLen}}" data-type="title" maxlength="{{titleMaxLen}}" placeholder="请输入标题" value="{{title}}"></input>
+        </view>
+        <text class="title">内容 {{noteNowLen}}/{{noteMaxLen}}</text>
+        <view class="body">
+            <textarea bindinput="contentInput" data-max="{{noteMaxLen}}" data-type="content" maxlength="{{noteMaxLen}}" placeholder="请输入描述" value="{{describe}}"></textarea>
+        </view>
+        <text class="title">上传图片（长按删除）</text>
+        <view class="img-upload">
+            <view bindtap="chooseImage" class="img-add">
+                <image src="../images/sc.png"></image>
+            </view>
+            <view bindlongtap="deleteImage" class="img-item" data-index="{{index}}" wx:for="{{uploadimgs}}" wx:key="index">
+                <image bindtap="previewImage" data-index="{{index}}" mode="aspectFill" src="{{item}}"></image>
+            </view>
+        </view>
+        <text class="title">负责人</text>
+        <view class="body">
+            <picker bindchange="bindPickerChange" mode="selector" range="{{userList}}" rangeKey="nickName" value="{{index}}">
+                <view class="picker"> 当前选择：{{username}} </view>
+            </picker>
+        </view>
+        <text class="title">完成时间</text>
+        <view class="body">
+            <picker bindchange="bindDateChange" class="picker" mode="date" placeholder="请选择完成时间" value="{{date}}">
+                <view class="picker"> 完成时间: {{date}} </view>
+            </picker>
+        </view>
+    </view>
+    <view class="workbench" style="padding: 0 35rpx;">
+        <view class="list" style="display: flex;flex-direction: row; justify-content: space-between;">
+            <view bindtap="resetBtnClick" class="btn" plain="true" size="default" style="border: 5rpx solid #004998;">重 置 </view>
+            <view bindtap="submitBtnClick" class="btn" size="default" style="background-color: #FF9C22;border: 5rpx solid #FF9C22;">提 交</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,26 @@
+<view class="container">
+    <view class="news">
+        <view class="page-body" wx:for="{{news_list}}" wx:key="id">
+            <navigator url="../news_detail/index?id={{item.id}}&type=news">
+                <view class="item">
+                    <view class="bgImg">
+                        <image class="posterb" data-id="{{id}}" mode="aspectFill" src="{{item.MFTE_cover}}"></image>
+                        <image class="poster" data-id="{{id}}" mode="aspectFill" src="{{item.MFTE_cover}}"></image>
+                    </view>
+                    <view class="meta">
+                        <text class="title" style="font-size: 26rpx;">{{item.MFTE_title}}</text>
+                        <text class="sub-title" style="position: absolute; bottom:0;">{{item.MFTE_entry_into_force_time}}</text>
+                        <view class="artists">
+                            <text wx:for="{{item.subject.directors}}" wx:key="id">{{item.name}}</text>
+                        </view>
+                        <view class="rating">
+                            <text>{{item.subject.rating.average}}</text>
+                        </view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+        <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+        <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+    </view>
+</view>

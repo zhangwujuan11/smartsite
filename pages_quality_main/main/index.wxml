@@ -1,0 +1,56 @@
+<view class="container">
+    <view class="monitor-tabbar" id="monitor-tab">
+        <view bindtap="swichNav" class="monitor-tab-item {{currentTab==index?'on':''}}" data-current="{{index}}" wx:for="{{tabs}}" wx:key="index">{{item.name}}</view>
+    </view>
+    <view class="searchbox">
+        <input bindinput="searchtext" data-type="title" placeholder="请输入搜索关键字" value="{{keyword}}"></input>
+    </view>
+    <view class="contentboxechat">
+        <view class="news">
+            <view class="page-body" wx:for="{{data_list}}" wx:key="id">
+                <navigator url="{{item.status==10004?'../recify_detail_new/index?id='+item.rectifyId+'&type=rectify':'../recify_detail_edit/index?id='+item.rectifyId+'&type=rectify'}}">
+                    <view class="item">
+                        <view class="meta">
+                            <text class="title">{{item.title}}</text>
+                            <view style="display:flex;flex-direction: row;align-items:center;position: relative;">
+                                <view class="titles" style="width: 600rpx;">创建时间：{{item.createTime}} </view>
+                                <text style="font-size: 24rpx"></text>
+                            </view>
+                            <view style="display:flex;margin-top:10rpx;flex-direction: row;align-items:center;position: relative;">
+                                <view class="titles">状态: </view>
+                                <text class="box-rank-number {{item.status!=10000?'rank-bg':''}}">{{item.statusDesc}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+            <view class="pagebox">
+                <view class="pages_box">
+                    <view bindtap="pagesFn" class="page_next {{pagesNum==0?'active':''}}" data-num="0">
+                        <image src="/images/left.png" style="width:25rpx;height:25rpx;"></image>
+                        <view>上一页</view>
+                    </view>
+                    <view bindtap="pagesFn" class="{{page_now==item+1?'active':''}}" data-num="{{item+1}}" style="border-radius: 50%;display: flex; align-items: center;justify-content: center;position: relative;" wx:for="{{page_list}}" wx:key="index">
+                        <view style="position: absolute;">{{item-0+1}}</view>
+                    </view>
+                    <view class="inputbx">
+                        <input bindconfirm="contentInput" class="forminner forminput" confirmType="go" type="text" value="{{page_now}}"></input>/{{page_total}} </view>
+                    <view bindtap="pagesFn" class="page_next {{pagesNum==-1?'active':''}}" data-num="-1">
+                        <view>下一页</view>
+                        <image src="/images/right.png" style="width:25rpx;height:25rpx;"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="chartbigbox" wx:if="{{currentTab==0}}">
+            <ec-canvas canvasId="barchart1" ec="{{ecbarchart1}}" orceUseOldCanvas="true" type="2d"></ec-canvas>
+            <ec-canvas canvasId="barchart2" ec="{{ecbarchart2}}" orceUseOldCanvas="true" type="2d"></ec-canvas>
+            <ec-canvas canvasId="linchart" ec="{{eclinchart}}" orceUseOldCanvas="true" type="2d"></ec-canvas>
+        </view>
+        <view class="chartbigbox" wx:if="{{currentTab==1}}">
+            <ec-canvas canvasId="barchartaq" ec="{{ecbarchartaq}}" orceUseOldCanvas="true" type="2d"></ec-canvas>
+            <ec-canvas canvasId="linchartaq" ec="{{eclinchartaq}}" orceUseOldCanvas="true" type="2d"></ec-canvas>
+        </view>
+    </view>
+    <view style="height: 130rpx;"></view>
+</view>

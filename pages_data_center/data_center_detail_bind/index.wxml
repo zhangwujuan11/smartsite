@@ -1,0 +1,58 @@
+<view style="padding: 30rpx;">
+    <view class="formtext flexbox fle-st bodb" wx:for="{{labelForm}}" wx:for-index="key" wx:for-item="value" wx:key="key">
+        <view class="labeltip">{{labelForm[key]}}:</view>
+        <view class="formcont flex2"> {{info[key]}} </view>
+    </view>
+    <view class="titletabletit">绑定数据：</view>
+    <view class="tablebox">
+        <view class="table  {{type=='SteelLab'?'tableboxslee':''}}">
+            <view class="tr">
+                <view class="th th1 {{item=='抗压强度'?'nopadd':''}} {{item=='生产厂家'?'nopadd2':''}}  {{item=='28d抗压强度（MPa）'?'nopadd3':''}}" wx:for="{{headlabel}}">
+                    <view class="with8 with9" wx:if="{{item==='生产厂家'}}">
+                        <view>{{item}}</view>
+                        <view class="flexbox widthfitc">
+                            <view class="bordertr">类别</view>
+                            <view class="bordertr">直径(mm)</view>
+                            <view class="bordertr">生产厂家</view>
+                            <view class="bordertr">批号</view>
+                        </view>
+                    </view>
+                    <view class="with8 with10" wx:elif="{{item==='28d抗压强度（MPa）'}}">
+                        <view>{{item}}</view>
+                        <view class="flexbox widthfitc">
+                            <view class="bordertr">屈服强度(MPa)</view>
+                            <view class="bordertr">抗拉强度(MPa)</view>
+                            <view class="bordertr">断后伸长率(%)</view>
+                            <view class="bordertr">最大力总延伸率(%)</view>
+                            <view class="bordertr">强屈比不小于1.25</view>
+                            <view class="bordertr">屈特比不大于1.30</view>
+                            <view class="bordertr">弯曲性能</view>
+                            <view class="bordertr">反向弯曲</view>
+                            <view class="bordertr">重量量偏差(%)</view>
+                        </view>
+                    </view>
+                    <view class="with8" wx:elif="{{item==='抗压强度'}}">
+                        <view>{{item}}</view>
+                        <view class="flexbox widthfitc">
+                            <view class="bordertr">第1组</view>
+                            <view class="bordertr">第2组</view>
+                            <view class="bordertr">第3组</view>
+                        </view>
+                    </view>
+                    <view wx:else>{{item}}</view>
+                </view>
+            </view>
+            <view class="tr" wx:for="{{tableList}}" wx:for-index="outIndex" wx:for-item="outItem">
+                <view class="td td1 {{inItem==='labDetails'?'nopadd':''}} {{inItem==='ky28'?'nopadd3':''}}" wx:for="{{headeKey}}" wx:for-index="inIndex" wx:for-item="inItem">
+                    <view class="flexbox widthfitc" wx:if="{{inItem==='ky28'}}">
+                        <view class="bordertr bordertr3" wx:for="{{ky28}}" wx:for-item="item28">{{tableList[outIndex][item28]||''}}</view>
+                    </view>
+                    <view class="flexbox widthfitc" wx:elif="{{inItem==='labDetails'}}">
+                        <view class="bordertr bordertr2" wx:for="{{tableList[outIndex][inItem]}}" wx:for-item="kyitem">{{kyitem.Stress}}</view>
+                    </view>
+                    <view wx:else>{{tableList[outIndex][inItem]||''}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

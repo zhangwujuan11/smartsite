@@ -1,0 +1,99 @@
+<view>
+    <view class="container">
+        <view style="background-color:#004099;position: fixed; width: 100%;height:{{background_height}}rpx;z-index:-999;border-radius: 0 0 50rpx 50rpx;"></view>
+    </view>
+    <view style="display: flex; flex-direction: column;justify-content: center;align-items: center;z-index: 101;">
+        <view class="workbench" style="margin-top:0;" wx:if="{{switch_model==true}}">
+            <video autoplay="true" binderror="videoErrorCallback" bindfullscreenchange="bindhorizontal" class="cover" enableAutoRotation="true" id="myVideo" initialTime="0.01" muted="{{muted}}" objectFit="cover" pictureInPictureMode="{{['push','pop']}}" pictureInPictureShowProgress="{{horizontal_status}}" showCenterPlayBtn="0" showMuteBtn="true" showScreenLockButton="true" showSnapshotButton="true" src="{{cur_video_url}}" title="{{video_title}}" vslideGestureInFullscreen="true"></video>
+        </view>
+        <view class="workbench" style="margin-top:0;" wx:else>
+            <video autoplay="true" binderror="videoErrorCallback" bindfullscreenchange="bindhorizontal" class="cover" controls="{{true}}" enableAutoRotation="true" enablePlayGesture="true" id="myVideo" initialTime="0.01" muted="true" objectFit="cover" pictureInPictureMode="{{['push','pop']}}" pictureInPictureShowProgress="{{horizontal_status}}" showFullscreenBtn="{{true}}" showPlayBtn="{{true}}" showProgress="{{show_progress}}" showScreenLockButton="true" src="{{cur_video_url}}" style="margin-top:0rpx;" title="{{video_title}}" vslideGestureInFullscreen="true"></video>
+        </view>
+        <view class="workbench" style="margin-top:30rpx;">
+            <view class="monitor-tabbar" id="monitor-tab">
+                <view bindtap="swichNav" class="monitor-tab-item {{currentTab==index?'on':''}}" data-current="{{index}}" wx:for="{{tabs}}" wx:key="index">{{item.name}}</view>
+            </view>
+            <view class="padbbt" style="margin-top:10rpx;height: {{monitor_list_height}}rpx; background-color: white;">
+                <view class="page-body" wx:for="{{monitor_lists.list}}" wx:key="id">
+                    <view bindtap="click_video" class="item" data-id="{{item.id}}" data-url="{{item.cam_videos_addr}}" wx:if="{{monitor_lists.type=='monitor_dev'||monitor_lists.type=='high_slope'}}">
+                        <image class="poster" data-id="{{id}}" mode="aspectFill" src="https://statics.ys7.com/device/assets/imgs/public/homeDevice.jpeg"></image>
+                        <view class="meta" style="position:relative;">
+                            <text class="title" style="font-size: 26rpx;">{{item.ayName}}</text>
+                            <view class="sub-title" style="position: absolute; bottom:0;display:{{currentTab==cur_video_info.list_index&&cur_video_info.dev_id==item.id?'flex':''}}">
+                                <view wx:if="{{cur_video_info.status}}">
+                                    <text style="color: #FB354E;">加载失败</text>
+                                </view>
+                                <view wx:else>
+                                    <text style="color: #89DFB2;">播放中</text>
+                                </view>
+                            </view>
+                        </view>
+                        <image src="../../images/monitor_icon/{{item.status==1?'status_run':'status_stop'}}.png" style="width:40rpx;height:40rpx;"></image>
+                    </view>
+                    <view bindtap="click_video_direct" class="item" data-id="{{item.id}}" data-url="{{item.cam_videos_addr}}" wx:else>
+                        <image class="poster" data-id="{{id}}" mode="aspectFill" src="https://statics.ys7.com/device/assets/imgs/public/homeDevice.jpeg"></image>
+                        <view class="meta" style="position:relative;">
+                            <text class="title" style="font-size: 26rpx;">{{item.cam_videos_note}}</text>
+                            <view class="sub-title" style="position: absolute; bottom:0;display:{{currentTab==cur_video_info.list_index&&cur_video_info.dev_id==item.id?'flex':''}}">
+                                <view wx:if="{{cur_video_info.status}}">
+                                    <text style="color: #FB354E;">加载失败</text>
+                                </view>
+                                <view wx:else>
+                                    <text style="color: #89DFB2;">播放中</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="default_div" wx:if="{{currentTab==0}}">
+                <view class="row" style="width:100%;">
+                    <view bindtouchend="end" bindtouchstart="Device_PTZ" class="cams_action_arrow" data-dict="4">
+                        <image class="d-img cams_content_row_right_2_1" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWBAMAAAAyb6E1AAAAJ1BMVEUAAAC9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9BCA1L7AAAADHRSTlMA+VFd5gQH8u5tSgg0N3CtAAAAaUlEQVQI17XIsQ1AQACF4RcqLYXCFSQGuFtBKWrRKgxgCL0hLHKJ8g3FO8cGXvHy54PWdohLjK9jNmT+Iil+UBxRHNCT5mZhQTrxRG/J1HDDzAIkHCtkpVWm6w4sUGKEFhI/5HB+efT6C9sJMxdNsnLZAAAAAElFTkSuQmCC"></image>
+                    </view>
+                    <view bindtouchend="end" bindtouchstart="Device_PTZ" class="cams_action_arrow " data-dict="0">
+                        <image class="d-img cams_content_row_right_2_2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWBAMAAAAyb6E1AAAAJ1BMVEUAAAC9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9BCA1L7AAAADHRSTlMA+VFd5gQH8u5tSgg0N3CtAAAAaUlEQVQI17XIsQ1AQACF4RcqLYXCFSQGuFtBKWrRKgxgCL0hLHKJ8g3FO8cGXvHy54PWdohLjK9jNmT+Iil+UBxRHNCT5mZhQTrxRG/J1HDDzAIkHCtkpVWm6w4sUGKEFhI/5HB+efT6C9sJMxdNsnLZAAAAAElFTkSuQmCC"></image>
+                    </view>
+                    <view bindtouchend="end" bindtouchstart="Device_PTZ" class="cams_action_arrow " data-dict="6">
+                        <image class="d-img cams_content_row_right_2_3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWBAMAAAAyb6E1AAAAJ1BMVEUAAAC9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9BCA1L7AAAADHRSTlMA+VFd5gQH8u5tSgg0N3CtAAAAaUlEQVQI17XIsQ1AQACF4RcqLYXCFSQGuFtBKWrRKgxgCL0hLHKJ8g3FO8cGXvHy54PWdohLjK9jNmT+Iil+UBxRHNCT5mZhQTrxRG/J1HDDzAIkHCtkpVWm6w4sUGKEFhI/5HB+efT6C9sJMxdNsnLZAAAAAElFTkSuQmCC"></image>
+                    </view>
+                    <view bindtouchend="end" bindtouchstart="Device_PTZ" class="cams_action_arrow" data-dict="10">
+                        <image class="d-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASBAMAAACk4JNkAAAAD1BMVEUAAAC9w9C9w9C9w9C9w9Ch4w7HAAAABHRSTlMA5kpJG2qUMwAAADJJREFUCNdjAAJmQQMGCGB0EYCyWFwcSGEZukCAMIMIlOWIxFKEsoRINBnDVUyCCkASAEriDwO/gkwMAAAAAElFTkSuQmCC"></image>
+                    </view>
+                    <view class="cams_action_arrow" style="font-size: 24rpx">变焦</view>
+                    <view bindtouchend="end" bindtouchstart="Device_PTZ" class="cams_action_arrow" data-dict="11">
+                        <image class="d-img2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAEAgMAAAD+L4dCAAAADFBMVEW9w9C9w9C9w9C9w9DbBN7cAAAAA3RSTlPmSklSjzZ3AAAAGElEQVQI12Po////vwKDPZA8ACX9gaQAALZADwGLHmdfAAAAAElFTkSuQmCC"></image>
+                    </view>
+                </view>
+                <view class="row" style="width:100%;">
+                    <view bindtouchend="end" bindtouchstart="Device_PTZ" class="cams_action_arrow" data-dict="2">
+                        <image class="d-img cams_content_row_right_2_4" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWBAMAAAAyb6E1AAAAJ1BMVEUAAAC9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9BCA1L7AAAADHRSTlMA+VFd5gQH8u5tSgg0N3CtAAAAaUlEQVQI17XIsQ1AQACF4RcqLYXCFSQGuFtBKWrRKgxgCL0hLHKJ8g3FO8cGXvHy54PWdohLjK9jNmT+Iil+UBxRHNCT5mZhQTrxRG/J1HDDzAIkHCtkpVWm6w4sUGKEFhI/5HB+efT6C9sJMxdNsnLZAAAAAElFTkSuQmCC"></image>
+                    </view>
+                    <view bindtap="Device_PTZ" class="cams_action_arrow" data-dict="100" style="font-size: 24rpx">停止 </view>
+                    <view bindtouchend="end" bindtouchstart="Device_PTZ" class="cams_action_arrow" data-dict="3">
+                        <image class="d-img cams_content_row_right_2_5" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWBAMAAAAyb6E1AAAAJ1BMVEUAAAC9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9BCA1L7AAAADHRSTlMA+VFd5gQH8u5tSgg0N3CtAAAAaUlEQVQI17XIsQ1AQACF4RcqLYXCFSQGuFtBKWrRKgxgCL0hLHKJ8g3FO8cGXvHy54PWdohLjK9jNmT+Iil+UBxRHNCT5mZhQTrxRG/J1HDDzAIkHCtkpVWm6w4sUGKEFhI/5HB+efT6C9sJMxdNsnLZAAAAAElFTkSuQmCC"></image>
+                    </view>
+                    <view bindtouchend="end" bindtouchstart="Device_PTZ" class="cams_action_arrow" data-dict="8">
+                        <image class="d-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASBAMAAACk4JNkAAAAD1BMVEUAAAC9w9C9w9C9w9C9w9Ch4w7HAAAABHRSTlMA5kpJG2qUMwAAADJJREFUCNdjAAJmQQMGCGB0EYCyWFwcSGEZukCAMIMIlOWIxFKEsoRINBnDVUyCCkASAEriDwO/gkwMAAAAAElFTkSuQmCC"></image>
+                    </view>
+                    <view class="cams_action_arrow" style="font-size: 24rpx">变倍</view>
+                    <view bindtouchend="end" bindtouchstart="Device_PTZ" class="cams_action_arrow" data-dict="9">
+                        <image class="d-img2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAEAgMAAAD+L4dCAAAADFBMVEW9w9C9w9C9w9C9w9DbBN7cAAAAA3RSTlPmSklSjzZ3AAAAGElEQVQI12Po////vwKDPZA8ACX9gaQAALZADwGLHmdfAAAAAElFTkSuQmCC"></image>
+                    </view>
+                </view>
+                <view class="row" style="width:100%;">
+                    <view bindtouchend="end" bindtouchstart="Device_PTZ" class="cams_action_arrow" data-dict="4">
+                        <image class="d-img cams_content_row_right_2_6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWBAMAAAAyb6E1AAAAJ1BMVEUAAAC9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9BCA1L7AAAADHRSTlMA+VFd5gQH8u5tSgg0N3CtAAAAaUlEQVQI17XIsQ1AQACF4RcqLYXCFSQGuFtBKWrRKgxgCL0hLHKJ8g3FO8cGXvHy54PWdohLjK9jNmT+Iil+UBxRHNCT5mZhQTrxRG/J1HDDzAIkHCtkpVWm6w4sUGKEFhI/5HB+efT6C9sJMxdNsnLZAAAAAElFTkSuQmCC"></image>
+                    </view>
+                    <view bindtouchend="end" bindtouchstart="Device_PTZ" class="cams_action_arrow" data-dict="1">
+                        <image class="d-img cams_content_row_right_2_7" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWBAMAAAAyb6E1AAAAJ1BMVEUAAAC9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9BCA1L7AAAADHRSTlMA+VFd5gQH8u5tSgg0N3CtAAAAaUlEQVQI17XIsQ1AQACF4RcqLYXCFSQGuFtBKWrRKgxgCL0hLHKJ8g3FO8cGXvHy54PWdohLjK9jNmT+Iil+UBxRHNCT5mZhQTrxRG/J1HDDzAIkHCtkpVWm6w4sUGKEFhI/5HB+efT6C9sJMxdNsnLZAAAAAElFTkSuQmCC"></image>
+                    </view>
+                    <view bindtouchend="end" bindtouchstart="Device_PTZ" class="cams_action_arrow" data-dict="7">
+                        <image class="d-img cams_content_row_right_2_8" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWBAMAAAAyb6E1AAAAJ1BMVEUAAAC9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9C9w9BCA1L7AAAADHRSTlMA+VFd5gQH8u5tSgg0N3CtAAAAaUlEQVQI17XIsQ1AQACF4RcqLYXCFSQGuFtBKWrRKgxgCL0hLHKJ8g3FO8cGXvHy54PWdohLjK9jNmT+Iil+UBxRHNCT5mZhQTrxRG/J1HDDzAIkHCtkpVWm6w4sUGKEFhI/5HB+efT6C9sJMxdNsnLZAAAAAElFTkSuQmCC"></image>
+                    </view>
+                    <view class="cams_content_row_right_2_list"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

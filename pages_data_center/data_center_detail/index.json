@@ -1,0 +1,5 @@
+ {
+   "usingComponents": {
+     "s-table": "../../Component/s-table/s-table"
+   }
+ }

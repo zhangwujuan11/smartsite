@@ -1,0 +1,170 @@
+<view class="recifydetailbox frombox_out">
+    <view class="cardbox">
+        <view class="cardtit bodb">施工信息</view>
+        <view class="cartitle">
+            <view class="flexbox">
+                <view class="status">[{{rectifyFormData.statusDesc}}]</view>
+                <view class="titleata">{{rectifyFormData.title}}</view>
+            </view>
+            <view class="flexbox">
+                <view class="labelbox">处理角色：</view>
+                <view>{{rectifyFormData.processorDeptName}}</view>
+            </view>
+            <view class="flexbox">
+                <view class="labelbox">负责人：</view>
+                <view>{{rectifyFormData.processorNick}}</view>
+            </view>
+            <view class="flexbox">
+                <view class="labelbox">手机号：</view>
+                <view>{{rectifyFormData.processorPhone}}</view>
+            </view>
+            <view class="flexbox">
+                <view class="labelbox">抄送：</view>
+                <view class="padr" wx:for="{{rectifyFormData.copies}}">{{sendDic[item]}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="cardbox" wx:for="{{rectifyFormData.problems}}" wx:for-index="indexfor">
+        <view class="cardtit bodb">整改内容</view>
+        <view class="formtext flexbox fle-st bodb">
+            <view>【{{dataTypeDic[item.dataType]}}】</view>
+            <view class="">隐患点：{{dangerDic[item.hidDanger]}}</view>
+        </view>
+        <view class="formtext verait flexbox fle-st bodb">
+            <view class="flex2"> {{item.context}} </view>
+        </view>
+        <view class="formtext flexbox verait fle-st bodb" wx:if="{{item.images.length>0}}">
+            <view class="formcont flex2">
+                <view class="img-upload">
+                    <view bindlongtap="deleteImage" class="img-item" data-index="{{index}}" data-index2="{{indexfor}}" data-usefor="sgfDealForm" wx:for="{{item.images}}" wx:for-item="imgitem" wx:key="index">
+                        <image bindtap="previewImage" data-index="{{index}}" data-index2="{{indexfor}}" data-usefor="sgfDealForm" mode="aspectFill" src="{{imgitem}}"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="formtext flexbox verait fle-st bodb">
+            <view class="formcont flex2">
+                <view class="">
+                    <view bindlongtap="deleteFile" class="file-item" data-index="{{index}}" data-index2="{{indexfor}}" data-usefor="sgfDealForm" wx:for="{{item.attachments}}" wx:for-item="fileitem" wx:key="index">
+                        <view class="flexbox fle-sb">
+                            <view class="filrico">
+                                <image mode="widthFix" src="../../images/zgimg/pdfico.png"></image>整改方案{{index+1}}</view>
+                            <view class="flexbox fle-sb">
+                                <view bindtap="previewFile" class="textbtn" data-item="{{fileitem}}">查看</view>
+                                <view bindtap="previewFile" class="textbtn" data-item="{{fileitem}}">下载</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{item.workflows.length>1}}">
+            <view class="{{workItem.advice?'zgyj':''}}" wx:for="{{item.workflows}}" wx:for-item="workItem">
+                <view class="cardtit bodb" wx:if="{{workItem.advice}}">{{workItem.processorType==21001?'业主':workItem.processorType==21003?'监理':''}}处理意见</view>
+                <view class="formtext verait flexbox fle-st bodb" wx:if="{{workItem.advice}}">
+                    <view class="flex2">
+                        <rich-text nodes="{{workItem.advice}}"></rich-text>
+                    </view>
+                </view>
+                <view class="formtext flexbox verait fle-st bodb" wx:if="{{workItem.images.length>0}}">
+                    <view class="formcont flex2">
+                        <view class="img-upload">
+                            <view bindlongtap="deleteImage" class="img-item" data-index="{{index}}" data-index2="{{indexfor}}" data-usefor="sgfDealForm" wx:for="{{workItem.images}}" wx:for-item="imgitem" wx:key="index">
+                                <image bindtap="previewImage" data-index="{{index}}" data-index2="{{indexfor}}" data-usefor="sgfDealForm" mode="aspectFill" src="{{imgitem}}"></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="formtext flexbox verait fle-st bodb" wx:if="{{workItem.attachments.length>0}}">
+                    <view class="formcont flex2">
+                        <view class="">
+                            <view bindlongtap="deleteFile" class="file-item" data-index="{{index}}" data-index2="{{indexfor}}" data-usefor="sgfDealForm" wx:for="{{workItem.attachments}}" wx:for-item="fileitem" wx:key="index">
+                                <view class="flexbox fle-sb">
+                                    <view class="filrico">
+                                        <image mode="widthFix" src="../../images/zgimg/pdfico.png"></image>整改方案{{index+1}}</view>
+                                    <view class="flexbox fle-sb">
+                                        <view bindtap="previewFile" class="textbtn" data-item="{{fileitem}}">查看</view>
+                                        <view bindtap="previewFile" class="textbtn" data-item="{{fileitem}}">下载</view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="flexbox btnbox fle-sa" wx:if="{{item.workflows[item.workflows.length-1].processorId==userId&&(item.workflows[item.workflows.length-1].processorType==21001||item.workflows[item.workflows.length-1].processorType==21003)&&item.workflows[item.workflows.length-1].actionCode==12001}}">
+                <view bindtap="checkMsgPopShow" class="bgg formbtn" data-item="against" data-problemid="{{item.problemId}}" wx:if="{{againstBtn}}">驳回</view>
+                <view bindtap="checkMsgPopShow" class="bgy formbtn" data-item="agree" data-problemid="{{item.problemId}}" wx:if="{{sendSPBtn}}">确认关闭</view>
+                <view bindtap="submitBtnClick_cl" class="bgy formbtn" wx:if="{{rectifyFormData.processorId==userId}}">确认提交</view>
+            </view>
+        </view>
+        <view class="cardbox" wx:if="{{rectifyFormData.processorId==userId&&item.workflows[item.workflows.length-1].actionCode==12001&&item.workflows[item.workflows.length-1].processorType==21002}}">
+            <view class="cardtit bodb">施工方意见</view>
+            <view class="formtext verait flexbox fle-st bodb">
+                <view class="flex2">
+                    <textarea bindinput="contentInput" class="forminner" data-index="{{indexfor}}" data-type="suggestion_sgfyj" placeholder="请输入意见" value="{{sgfDealForm[indexfor].advice}}"></textarea>
+                </view>
+            </view>
+            <view class="formtext flexbox verait fle-st bodb">
+                <view class="labeltip">照片</view>
+                <view class="formcont flex2">
+                    <view class="img-upload">
+                        <view bindlongtap="deleteImage" class="img-item" data-index="{{index}}" data-index2="{{indexfor}}" data-usefor="sgfDealForm" wx:for="{{sgfDealForm[indexfor].images}}" wx:key="index">
+                            <image bindtap="previewImage" data-index="{{index}}" data-index2="{{indexfor}}" data-usefor="sgfDealForm" mode="aspectFill" src="{{item}}"></image>
+                        </view>
+                        <view bindtap="chooseImage" class="img-add" data-index="{{indexfor}}" data-useFor="sgfDealForm">
+                            <image src="../images/sc.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="formtext flexbox verait fle-st bodb">
+                <view class="labeltip">附件</view>
+                <view class="formcont flex2">
+                    <view class="">
+                        <view bindtap="chooseFiletoUpload" class="file-add" data-index="{{indexfor}}" data-usefor="sgfDealForm"> 上传pdf文件（小于50M） </view>
+                        <view bindlongtap="deleteFile" class="file-item" data-index="{{index}}" data-index2="{{indexfor}}" data-usefor="sgfDealForm" wx:for="{{sgfDealForm[indexfor].attachments}}" wx:for-item="fileitem" wx:key="index">
+                            <view class="flexbox fle-sb">
+                                <view class="filrico">
+                                    <image mode="widthFix" src="../../images/zgimg/pdfico.png"></image>处理方案{{index+1}}</view>
+                                <view class="flexbox fle-sb">
+                                    <view bindtap="previewFile" class="textbtn" data-item="{{fileitem}}">查看</view>
+                                    <view bindtap="previewFile" class="textbtn" data-item="{{fileitem}}">下载</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="flexbox btnbox fle-sa">
+                <view bindtap="subProblemItem" class="bgy formbtn" data-id="{{item.problemId}}" data-index="{{indexfor}}" wx:if="{{rectifyFormData.processorId==userId}}">确认提交</view>
+            </view>
+        </view>
+    </view>
+    <view class="flexbox formbottm fle-sb" wx:if="{{false}}">
+        <view class="bgb formbtn" wx:if="{{edit}}">继续编辑</view>
+        <view bindtap="returnpage" class="formbtn" wx:if="{{qxBtn}}">返回</view>
+        <view bindtap="submitBtnClick" class="bgg formbtn" wx:if="{{sendBtn}}">发起整改</view>
+        <view bindtap="deleteDeal" class="bgy formbtn" wx:if="{{rebackBtn}}">撤回</view>
+    </view>
+    <view catchtouchmove="true" class="dialogbox" wx:if="{{dialogshow}}">
+        <view class="diabody">
+            <view class="cardbox diacontent">
+                <view class="cardtit bodb">处理意见</view>
+                <view class="formtext verait flexbox fle-st bodb">
+                    <view class="flex2">
+                        <textarea bindinput="contentInput" class="forminner" data-type="suggestion_check" placeholder="请输入意见" value="{{checkMsg}}"></textarea>
+                    </view>
+                </view>
+                <view class="flexbox btnbox fle-sa">
+                    <view bindtap="subCheckMsg" class="bgb formbtn" wx:if="{{!isAgree}}">确认驳回</view>
+                    <view bindtap="subCheckMsg" class="bgb formbtn" wx:if="{{isAgree}}">确认关闭</view>
+                    <view bindtap="closeDialog" class="bgg formbtn">取消</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="printbtn">
+        <image bindtap="exportFile" src="/images/zgimg/printico.png"></image>
+    </view>
+</view>

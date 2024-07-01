@@ -1,0 +1,55 @@
+<view class="recifydetailbox frombox_out">
+    <view class="cardbox">
+        <view class="cardtit bodb">梁片信息</view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">标段名称</view>
+            <view class="formcont formarrow flex2">
+                <picker bindchange="bindPickerChange" data-type="cljs" mode="selector" range="{{processorDeptList}}" rangeKey="{{'sectionName'}}" value="{{index}}">
+                    <input disabled class="forminner formpic" placeholder="请选择标段" value="{{refrom.sectionName}}"></input>
+                </picker>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">梁片名称</view>
+            <view class="formcont flex2">
+                <input bindinput="contentInput" class="forminner" data-type="title" placeholder="请输入名称" value="{{girderName.girderName}}"></input>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">浇筑日期</view>
+            <view class="formcont formarrow flex2">
+                <picker bindchange="bindDateChange" data-item="jiaozhu" mode="date" value="{{date}}">
+                    <input disabled class="forminner formpic" placeholder="请选择时间" value="{{jiaozhudate}}"></input>
+                </picker>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">张拉日期</view>
+            <view class="formcont formarrow flex2">
+                <picker bindchange="bindDateChange" data-item="zhangla" mode="date" value="{{date}}">
+                    <input disabled class="forminner formpic" placeholder="请选择时间" value="{{zhangladate}}"></input>
+                </picker>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">压浆日期</view>
+            <view class="formcont formarrow flex2">
+                <picker bindchange="bindDateChange" data-item="yajiang" mode="date" value="{{date}}">
+                    <input disabled class="forminner formpic" placeholder="请选择时间" value="{{yajiangdate}}"></input>
+                </picker>
+            </view>
+        </view>
+        <view class="formtext flexbox fle-st bodb">
+            <view class="labeltip">入库日期</view>
+            <view class="formcont formarrow flex2">
+                <picker bindchange="bindDateChange" data-item="ruku" mode="date" value="{{date}}">
+                    <input disabled class="forminner formpic" placeholder="请选择时间" value="{{rukudate}}"></input>
+                </picker>
+            </view>
+        </view>
+    </view>
+    <view class="btnbox">
+        <button bindtap="pagesFn">返回</button>
+        <button bindtap="submitrefrom" class="submit">确认提交</button>
+    </view>
+</view>

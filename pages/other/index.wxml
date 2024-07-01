@@ -1,0 +1,79 @@
+<view class="move-container" style="width: 100%;">
+    <view style="display: flex; flex-direction: column; align-items: center;justify-content: center;width: 100%; z-index:98;margin-top:{{top_height}}rpx;">
+        <view style="width: 690rpx;height:600rpx;background-color: white;border-radius: 15rpx;position: relative;">
+            <view class="workbench" id="weather" style="margin-top:0;position: relative;padding: 30rpx; background-color: white;">
+                <view class="guide" wx:if="{{wea_dict.wea_list}}">
+                    <view class="title">
+                        <view style="display:flex;flex-direction: column;align-items: flex-start;">
+                            <view style="display: flex;flex-direction: row;align-items: center;">
+                                <image src="../../images/data_center_icon/position.png" style="width:32rpx;height: 32rpx;margin-right: 5rpx;"></image>
+                                <view style="font-size:32rpx;color:#3E3D3B;">后丘里大桥</view>
+                            </view>
+                            <view style="color: #B9C2D3;margin-top:10rpx;color:#CECECE;margin-left: 37rpx;"> {{fullDay}}</view>
+                        </view>
+                        <view style="background-color: white;border-radius: 15rpx;">
+                            <view class="guide" style="width:100%;padding-top:30rpx;" wx:if="{{wea_dict.wea_list}}">
+                                <view class="guides">
+                                    <view wx:for="{{wea_dict.wea_list}}" wx:key="index">
+                                        <view class="temper_item {{index==1?'temper_item_showdaw':''}}">
+                                            <view class="date i" style="{{index==1?'margin-top:15rpx;font-size:26rpx;color:#717171;':'font-size: 22rpx;color:#717171;margin-top:25rpx;'}}"> {{item.late_week}} </view>
+                                            <view class="date i" style="{{index==1?'margin-top:7rpx;font-size: 22rpx;color:#B7B7B7;':'font-size: 18rpx;color:#B7B7B7;margin-top:9rpx;'}}"> {{item.late_date}} </view>
+                                            <view class="weather i">
+                                                <image mode="widthFix" src="{{item.late_weather_icon}}" style="{{index==1?'width: 52rpx;height: 52rpx;margin-top:7rpx;':'width: 46rpx;height: 46rpx;margin-top:9rpx;'}}"></image>
+                                            </view>
+                                            <view class="wind i" style="{{index==1?'font-size: 24rpx;color: #717171;margin-top:7rpx;':'font-size: 20rpx;color: #717171;margin-top:9rpx;'}}"> {{item.late_wind_dir}} {{item.late_wind}}</view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view style="width:550rpx;padding: 0 70rpx;position:absolute;bottom:50rpx;display: flex;flex-direction: row;justify-content: space-between;">
+                <view class="tem_item">
+                    <image src="../../images/data_center_icon/wind_dir.png" style="height: 70rpx;width: 70rpx;"></image>
+                    <view class="context">
+                        <view class="date"> {{wea_dict.field.wind_dir}} {{wea_dict.field.wind}} </view>
+                    </view>
+                </view>
+                <view class="tem_item">
+                    <image src="../../images/data_center_icon/pm25.png" style="height: 70rpx;width: 70rpx;"></image>
+                    <view class="context"> PM2.5 {{pm25[0]}} </view>
+                </view>
+                <view class="tem_item">
+                    <image src="../../images/data_center_icon/hum.png" style="height: 70rpx;width: 70rpx;"></image>
+                    <view class="context"> 湿度值 {{hum[0]}} </view>
+                </view>
+            </view>
+            <view class="logoutbox">
+                <view class="disinlinb">{{userName}}</view>
+                <view bindtap="logout" class="tcbtn disinlinb">退出</view>
+            </view>
+        </view>
+        <view class="workbench" style="margin-top:0;">
+            <view style="display: flex; flex-direction: row;flex-wrap:wrap;justify-content:space-between; padding:0 35rpx;">
+                <view catchtap="open" class="items" data-name="SteelLab" id="total">
+                    <image src="../../images/data_center_icon/test.png" style="height: 80rpx;width: 80rpx;"></image>
+                    <text>钢筋拉伸弯曲试验室</text>
+                </view>
+                <view catchtap="open" class="items" data-name="concrete" id="total">
+                    <image src="../../images/data_center_icon/test.png" style="height: 80rpx;width: 80rpx;"></image>
+                    <text>混泥土抗压试验室</text>
+                </view>
+                <view catchtap="open" class="items" data-name="cementlab" id="total">
+                    <image src="../../images/data_center_icon/stir.png" style="height: 80rpx;width: 80rpx;"></image>
+                    <text>拌合站</text>
+                </view>
+                <view catchtap="open" class="items" data-name="entrance" id="check">
+                    <image src="../../images/data_center_icon/attendance_icon.png" style="height: 80rpx;width: 80rpx;"></image>
+                    <text>出勤</text>
+                </view>
+                <view catchtap="open" class="items" data-name="salary" id="check">
+                    <image src="../../images/data_center_icon/salary_icon.png" style="height: 80rpx;width: 80rpx;"></image>
+                    <text>农民工工资</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

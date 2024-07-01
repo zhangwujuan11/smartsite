@@ -1,0 +1,106 @@
+.meta {
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  height: 1000rpx;
+  padding: 50rpx 40rpx;
+}
+.poster {
+  height: 80%;
+  margin: 20rpx;
+  width: 80%;
+}
+.info {
+  color: #888;
+  font-size: 18rpx;
+  margin-top: 20rpx;
+  width: 80%;
+}
+.summary {
+  margin: 30rpx auto;
+  width: 80%;
+}
+.label {
+  display: block;
+}
+.content {
+  color: #666;
+  font-size: 20rpx;
+  padding: 10rpx;
+}
+.body {
+  border-radius: 12rpx;
+  margin-left: 20rpx;
+  margin-top: 10rpx;
+  width: 94%;
+}
+.img-item {
+  display: -webkit-flex;
+  display: flex;
+  margin: 6rpx 0;
+}
+.title {
+  color: #444;
+  font-size: 30rpx;
+  margin-top: 10rpx;
+}
+.workbench .body {
+  background: #fff;
+  border-radius: 12rpx;
+  margin: 10rpx 3%;
+}
+.workbench .body .img-upload {
+  font-size: 0;
+  overflow: hidden;
+  padding: 20rpx;
+}
+.workbench .body .img-upload .img-item {
+  border: 1rpx dashed #ddd;
+  float: left;
+  height: 160rpx;
+  margin: 20rpx;
+  width: 180rpx;
+}
+.workbench .body .img-upload image {
+  height: 100%;
+  width: 100%;
+}
+.workbench .body .img-upload .img-item {
+  position: relative;
+}
+.workbench .body .img-upload .img-item icon {
+  position: absolute;
+  right: -12rpx;
+  top: -12rpx;
+}
+.divLine {
+  background: #e0e3da;
+  height: 1rpx;
+  margin-top: 20rpx;
+  width: 100%;
+}
+.anniu {
+  bottom: 7rpx;
+  display: -webkit-flex;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  z-index: 666;
+}
+.btn {
+  background-color: #ff9c22;
+  border-radius: 50rpx;
+  color: #fff;
+  font-size: 32rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  margin: 30rpx 0rpx 50rpx;
+  text-align: center;
+  width: 690rpx;
+}
+.comment_img {
+  height: 110rpx;
+  margin: 0 8rpx;
+  width: 210rpx;
+}

@@ -1,0 +1,31 @@
+<view class="login-container">
+    <image class="bglogin" src="../../images/login_icon/bg.png"></image>
+    <view class="login-context">
+        <view>
+            <image src="../../images/login_icon/logo.png" style="width: 224rpx;height:224rpx;"></image>
+        </view>
+        <view>
+            <view style="font-size: 54rpx; color: #333333;margin-bottom: 20rpx;"> 欢迎来到智慧工地平台 </view>
+        </view>
+        <view style="margin-top:158rpx;">
+            <form bindsubmit="loginForm">
+                <view style="position: relative;">
+                    <input name="name" placeholder="请输入用户名" placeholderStyle="color:#BCBCC1;" style="background:#FFFFFF;color:#BCBCC1;height: 100rpx;width:450rpx;border-radius: 50rpx; font-size: 28rpx;padding:0 100rpx;" type="text"></input>
+                    <image src="../../images/login_icon/user_icon.png" style="width: 48rpx;height: 48rpx;position: absolute;left:28rpx; top:27rpx;z-index: 9999;"></image>
+                </view>
+                <view style="margin-top:30rpx;border-radius: 50rpx;position: relative;">
+                    <input name="pwd" placeholder="请输入密码" placeholderStyle="color:#BCBCC1;" style="background:#FFFFFF;color:#BCBCC1;height: 100rpx; border-radius: 50rpx; font-size: 28rpx;  padding: 0 100rpx; box-sizing: border-box;" type="password"></input>
+                    <image src="../../images/login_icon/pwd_icon.png" style="width: 48rpx;height: 48rpx;position: absolute;left:28rpx; top:26rpx;z-index: 9999;"></image>
+                </view>
+                <view class="agreebox">
+                    <checkbox bindtap="checkboxchange" value="{{agree}}"></checkbox>
+                    <view class="agreeboxtext"> 我已阅读并同意 <navigator url="../login_caceal/index?id=0">《用户服务协议》</navigator> 及 <navigator url="../login_caceal/index?id=1">《隐私政策》</navigator>
+                    </view>
+                </view>
+                <view class="ligin-button" style="margin-top:90rpx;">
+                    <button class="login-btn" disabled="{{!agree}}" formType="submit" hoverClass="btn-hover">登录</button>
+                </view>
+            </form>
+        </view>
+    </view>
+</view>
